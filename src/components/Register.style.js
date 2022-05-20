@@ -23,6 +23,10 @@ export const Wrapper = styled.div`
     width: 25vw;
     margin-left: 20vw;
   }
+
+  @media screen and (min-width: 1080px) {
+    margin-top: 0;
+  }
 `;
 
 export const Logo = styled.a`
@@ -32,77 +36,6 @@ export const Logo = styled.a`
     margin-top: 0;
   }
 
-`;
-
-export const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin-top: 4rem;
-
-  input {
-    width: 75vw;
-    border: none;
-    border-bottom: 1px solid #5a5a5a;
-    font-weight: 300;
-    font-size: 1rem;
-
-    &:nth-child(n + 2) {
-      margin-top: 2rem;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    input {
-      width: 25vw;
-      font-size: .8rem;
-    }
-  }
-
-  @media screen and (min-width: 1080px) {
-    margin-top: 6rem;
-
-    input {
-      font-size: 1.1rem;
-
-      &:nth-child(n+2) {
-        margin-top: 2.2rem;
-      }
-    }
-  }
-
-  @media screen and (min-width: 1440px) {
-    input {
-      &:nth-child(n+2) {
-        margin-top: 3rem;
-      }
-    }
-  }
-`;
-
-export const StyledButton = styled.button`
-  width: 75vw;
-  padding: 0.5rem;
-  background-color: ${({ theme }) => theme.colors.purple};
-  color: ${({ theme }) => theme.colors.white};
-  font-weight: 700;
-  border: none;
-  border-radius: 10px;
-  margin-top: 3rem;
-  font-size: 1.15rem;
-  cursor: pointer;
-
-  @media screen and (min-width: 768px) {
-    width: 25vw;
-  }
-
-  @media screen and (min-width: 1080px) {
-    font-size: 1.4rem;
-    padding: 0.7rem;
-  }
-
-  @media screen and (min-width: 1440px) {
-    margin-top: 5rem;
-  }
 `;
 
 export const StyledLink = styled.a`
