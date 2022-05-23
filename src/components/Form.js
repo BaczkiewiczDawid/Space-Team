@@ -1,4 +1,4 @@
-import { StyledForm, StyledButton, ErrorMessage } from "components/Form.style";
+import { StyledForm, StyledButton, ErrorMessage, Input } from "components/Form.style";
 import { useFormik } from "formik";
 
 const validate = (values) => {
@@ -41,7 +41,7 @@ const Form = ({ location }) => {
 
   return (
     <StyledForm onSubmit={formik.handleSubmit}>
-      <input
+      <Input
         type="text"
         id="username"
         name="username"
@@ -49,11 +49,12 @@ const Form = ({ location }) => {
         onBlur={formik.handleBlur}
         value={formik.values.username}
         placeholder="Enter Your username"
+        err={formik.touched.username && formik.errors.username && location.pathname === '/register'}
       />
-      {formik.touched.username && formik.errors.username ? (
+      {formik.touched.username && formik.errors.username && location.pathname === '/register' ? (
         <ErrorMessage>{formik.errors.username}</ErrorMessage>
       ) : null}
-      <input
+      <Input
         type="password"
         id="password"
         name="password"
@@ -61,12 +62,13 @@ const Form = ({ location }) => {
         onBlur={formik.handleBlur}
         value={formik.values.password}
         placeholder="Enter Your password"
+        err={formik.errors.password && formik.touched.password && location.pathname  === '/register'}
       />
-      {formik.touched.password && formik.errors.password ? (
+      {formik.touched.password && formik.errors.password && location.pathname === '/register' ? (
         <ErrorMessage>{formik.errors.password}</ErrorMessage>
       ) : null}
       {location.pathname === "/register" ? (
-        <input
+        <Input
           type="text"
           id="email"
           name="email"
@@ -74,9 +76,10 @@ const Form = ({ location }) => {
           onBlur={formik.handleBlur}
           value={formik.values.email}
           placeholder="Enter Your email"
+          err={formik.errors.email && formik.touched.email}
         />
       ) : null}
-      {formik.touched.email && formik.errors.email ? (
+      {formik.touched.email && formik.errors.email && location.pathname === '/register' ? (
         <ErrorMessage>{formik.errors.email}</ErrorMessage>
       ) : null}
       <StyledButton type="submit">

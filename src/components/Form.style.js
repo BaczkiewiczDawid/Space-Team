@@ -1,46 +1,43 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   margin-top: 4rem;
 
-  input {
-    width: 75vw;
-    border: none;
-    border-bottom: 1px solid #5a5a5a;
-    font-weight: 300;
-    font-size: 1rem;
+  @media screen and (min-width: 1080px) {
+    margin-top: 6rem;
+  }
+`;
 
-    &:nth-child(n + 2) {
-      margin-top: 2rem;
-    }
+export const Input = styled.input`
+  width: 75vw;
+  border: none;
+  border-bottom: 1px solid ${props => props.err ? props.theme.colors.error : props.theme.colors.black};
+  font-weight: 300;
+  font-size: 1rem;
+  color: ${props => props.err ? props.theme.colors.error : props.theme.colors.black};
+
+  &:nth-child(n + 2) {
+    margin-top: 2rem;
   }
 
   @media screen and (min-width: 768px) {
-    input {
-      width: 25vw;
-      font-size: .8rem;
-    }
+    width: 25vw;
+    font-size: 0.8rem;
   }
 
   @media screen and (min-width: 1080px) {
-    margin-top: 6rem;
+    font-size: 1.1rem;
 
-    input {
-      font-size: 1.1rem;
-
-      &:nth-child(n+2) {
-        margin-top: 2.2rem;
-      }
+    &:nth-child(n + 2) {
+      margin-top: 2.2rem;
     }
   }
 
   @media screen and (min-width: 1440px) {
-    input {
-      &:nth-child(n+2) {
-        margin-top: 3rem;
-      }
+    &:nth-child(n + 2) {
+      margin-top: 3rem;
     }
   }
 `;
@@ -59,7 +56,7 @@ export const StyledButton = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.darkPurple};
-    transition: .2s;
+    transition: 0.2s;
   }
 
   @media screen and (min-width: 768px) {
@@ -79,5 +76,5 @@ export const StyledButton = styled.button`
 export const ErrorMessage = styled.span`
   color: ${({ theme }) => theme.colors.error};
   margin-left: 1rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 `;

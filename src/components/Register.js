@@ -15,8 +15,6 @@ import { useLocation } from "react-router-dom";
 const Register = () => {
   const location = useLocation();
 
-  console.log(location.pathname);
-
   return (
     <Big>
       <StyledBackground src={backgroundImage} alt="wild forest" />
