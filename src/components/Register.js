@@ -1,13 +1,14 @@
 import backgroundImage from "assets/images/background.svg";
 import logo from "assets/images/logo.svg";
 import {
-  Big,
+  Container,
   StyledBackground,
   Wrapper,
   Logo,
-  Container,
+  Navigation,
   LinkWrapper,
   StyledLink,
+  StyledNavLink
 } from "components/Register.style";
 import Form from "components/Form";
 import { useLocation } from "react-router-dom";
@@ -15,34 +16,32 @@ import { useLocation } from "react-router-dom";
 const Register = () => {
   const location = useLocation();
 
-  console.log(location.pathname);
-
   return (
-    <Big>
+    <Container>
       <StyledBackground src={backgroundImage} alt="wild forest" />
       <Wrapper>
         <Logo href="#">
           <img src={logo} alt="space team" />
         </Logo>
-        <Container>
+        <Navigation register={location.pathname === '/register'}>
           <div></div>
           <LinkWrapper>
-            <a href="/login">Sign in</a>
-            <a href="/register">Sign up</a>
+            <StyledNavLink to="/login" purple={location.pathname === "/login"} >Sign in</StyledNavLink>
+            <StyledNavLink to="/register" purple={location.pathname === "/register"}>Sign up</StyledNavLink>
           </LinkWrapper>
-        </Container>
+        </Navigation>
         <Form location={location} />
         {location.pathname === "/register" ? (
-          <StyledLink href="/login">
+          <StyledLink to="/login">
             Already have an account?<span> Login now!</span>
           </StyledLink>
         ) : (
-          <StyledLink href="/register">
+          <StyledLink to="/register">
             Don't have an account?<span> Register now!</span>
           </StyledLink>
         )}
       </Wrapper>
-    </Big>
+    </Container>
   );
 };
 

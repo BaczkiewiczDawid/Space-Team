@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const Big = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column; 
 
@@ -38,7 +39,7 @@ export const Logo = styled.a`
 
 `;
 
-export const StyledLink = styled.a`
+export const StyledLink = styled(Link)`
   margin-top: 1.3rem;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.black};
@@ -58,7 +59,7 @@ export const StyledLink = styled.a`
   }
 `;
 
-export const Container = styled.div`
+export const Navigation = styled.nav`
   display: flex;
   flex-direction: column;
 
@@ -75,24 +76,33 @@ export const Container = styled.div`
   @media screen and (min-width: 1080px) {
     width: 17vw;
   }
+
+  &::before {
+    content: '';
+    width: 30%;
+    height: 5px;
+    border-radius: 100px;
+    position: absolute;
+    right: ${props => props.register ? '16%' : null};
+    background-color: ${({ theme }) => theme.colors.purple};
+  }
 `;
 
 export const LinkWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1rem 1rem;
+`;
 
-  a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.black};
-  }
+export const StyledNavLink = styled(Link)`
+  text-decoration: none;
+    font-weight: ${props => props.purple ? '700' : '300'};
+    color: ${props => props.purple ? props.theme.colors.purple : props.theme.colors.black};
 
-  @media screen and (min-width: 1440px) {
-    a {
+    @media screen and (min-width: 1440px) {
       font-size: 1.4rem;
       padding: .5rem 2rem;
     }
-  }
 `;
 
 export const StyledBackground = styled.img`
