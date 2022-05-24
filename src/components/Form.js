@@ -1,5 +1,11 @@
-import { StyledForm, StyledButton, ErrorMessage, Input } from "components/Form.style";
+import {
+  StyledForm,
+  StyledButton,
+  ErrorMessage,
+  Input,
+} from "components/Form.style";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -27,6 +33,8 @@ const validate = (values) => {
 };
 
 const Form = ({ location }) => {
+  let navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -39,8 +47,14 @@ const Form = ({ location }) => {
     },
   });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    navigate("/", { replace: true });
+  };
+
   return (
-    <StyledForm onSubmit={formik.handleSubmit}>
+    <StyledForm onSubmit={formik.handleSubmit && handleSubmit}>
       <Input
         type="text"
         id="username"
@@ -49,9 +63,15 @@ const Form = ({ location }) => {
         onBlur={formik.handleBlur}
         value={formik.values.username}
         placeholder="Enter Your username"
-        err={formik.touched.username && formik.errors.username && location.pathname === '/register'}
+        err={
+          formik.touched.username &&
+          formik.errors.username &&
+          location.pathname === "/register"
+        }
       />
-      {formik.touched.username && formik.errors.username && location.pathname === '/register' ? (
+      {formik.touched.username &&
+      formik.errors.username &&
+      location.pathname === "/register" ? (
         <ErrorMessage>{formik.errors.username}</ErrorMessage>
       ) : null}
       <Input
@@ -62,9 +82,15 @@ const Form = ({ location }) => {
         onBlur={formik.handleBlur}
         value={formik.values.password}
         placeholder="Enter Your password"
-        err={formik.errors.password && formik.touched.password && location.pathname  === '/register'}
+        err={
+          formik.errors.password &&
+          formik.touched.password &&
+          location.pathname === "/register"
+        }
       />
-      {formik.touched.password && formik.errors.password && location.pathname === '/register' ? (
+      {formik.touched.password &&
+      formik.errors.password &&
+      location.pathname === "/register" ? (
         <ErrorMessage>{formik.errors.password}</ErrorMessage>
       ) : null}
       {location.pathname === "/register" ? (
@@ -79,7 +105,9 @@ const Form = ({ location }) => {
           err={formik.errors.email && formik.touched.email}
         />
       ) : null}
-      {formik.touched.email && formik.errors.email && location.pathname === '/register' ? (
+      {formik.touched.email &&
+      formik.errors.email &&
+      location.pathname === "/register" ? (
         <ErrorMessage>{formik.errors.email}</ErrorMessage>
       ) : null}
       <StyledButton type="submit">
