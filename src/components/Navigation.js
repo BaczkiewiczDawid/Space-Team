@@ -1,23 +1,35 @@
 import { useState } from "react";
 import logo from "assets/images/logo.svg";
-import whiteLogo from 'assets/images/logo-white.svg';
+import whiteLogo from "assets/images/logo-white.svg";
 import {
   StyledBurger,
   Nav,
   NavigationContent,
   StyledLink,
-  LinksContainer
-} from "components/navigation.style";
-import homeIcon from "assets/images/home-icon.svg";
-import chatIcon from "assets/images/chat-icon.svg";
-import bellIcon from "assets/images/bell-icon.svg";
-import settingsIcon from "assets/images/settings-icon.svg";
+  LinksContainer,
+  Profile,
+  Underline,
+  Picture,
+  Logout,
+} from "components/Navigation.style";
+import dashboardIcon from "assets/images/grid.svg";
+import chatIcon from "assets/images/message-square.svg";
+import bellIcon from "assets/images/bell.svg";
+import settingsIcon from "assets/images/settings.svg";
+import usersIcon from "assets/images/users.svg";
+import logoutIcon from "assets/images/log-out.svg";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  let navigate = useNavigate();
 
   const handleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    navigate("/login", { replace: true });
   };
 
   return (
@@ -30,10 +42,19 @@ const Navigation = () => {
       </StyledBurger>
       {isOpen ? (
         <NavigationContent>
+          <Profile>
+            <Picture></Picture>
+            <p>Jhon Doe</p>
+          </Profile>
+          <Underline />
           <LinksContainer>
             <StyledLink to="/">
-              <img src={homeIcon} alt="home" />
+              <img src={dashboardIcon} alt="home" />
               <p>Home</p>
+            </StyledLink>
+            <StyledLink to="/">
+              <img src={usersIcon} alt="friends" />
+              <p>Friends</p>
             </StyledLink>
             <StyledLink to="/">
               <img src={chatIcon} alt="chat" />
@@ -48,6 +69,10 @@ const Navigation = () => {
               <p>Settings</p>
             </StyledLink>
           </LinksContainer>
+          <Logout onClick={handleLogout}>
+            <img src={logoutIcon} alt="logout"></img>
+            <p>Log out</p>
+          </Logout>
         </NavigationContent>
       ) : null}
     </Nav>

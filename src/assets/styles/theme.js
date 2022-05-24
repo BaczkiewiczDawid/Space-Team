@@ -6,7 +6,8 @@ export const theme = {
         darkPurple: '#5e4ad9',
         grey: '5a5a5a',
         lightGrey: '9c9c9c',
-        error: '#ff4747'
+        error: '#ff4747',
+        background: '#262A31'
     },
     fontSize: {
         s: '12px',
