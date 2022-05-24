@@ -1,6 +1,8 @@
+import Navigation from 'components/Navigation';
+
 const Dashboard = () => {
     return (
-        <h1>Dashboard</h1>
+        <Navigation />
     )
 }
 
