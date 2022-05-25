@@ -1,32 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-
-export const StyledBurger = styled.button`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 1.6rem;
-  height: 1.6rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 10;
-
-  &:focus {
-    outline: none;
-  }
-
-  div {
-    width: 2rem;
-    height: 0.25rem;
-    background-color: ${(props) => (props.open ? "white" : "black")};
-    border-radius: 10px;
-    transition: all 0.3s linear;
-    position: relative;
-    transform-origin: 1px;
-  }
-`;
 
 export const Nav = styled.nav`
   display: flex;
@@ -40,6 +12,20 @@ export const Nav = styled.nav`
     height: auto;
     z-index: 999;
   }
+
+  @media screen and (min-width: 768px) {
+    margin-left: 32vw;
+    width: auto;
+    margin-top: 1rem;
+  }
+
+  @media screen and (min-width: 1080px) {
+    margin-left: 25vw;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-left: 22vw;
+  }
 `;
 
 export const NavigationContent = styled.div`
@@ -49,25 +35,19 @@ export const NavigationContent = styled.div`
   width: 100vw;
   height: 101vh;
   background-color: ${({ theme }) => theme.colors.background};
-`;
 
-export const StyledLink = styled(Link)`
-  display: flex;
-  flex-direction: row;
-  margin-top: .7rem;
-  text-decoration: none;
-
-  img {
-    width: 1.5rem;
-    height: auto;
+  @media screen and (min-width: 768px) {
+    position: fixed;
+    width: 27vw;
+    height: 100vh;
   }
 
-  p {
-    color: ${({ theme }) => theme.colors.white};
-    font-weight: 300;
-    margin-left: 1rem;
-    opacity: 60%;
-    font-size: .85rem;
+  @media screen and (min-width: 1080px) {
+    width: 20vw;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 17vw;
   }
 `;
 
@@ -88,6 +68,11 @@ export const Profile = styled.div`
     color: ${({ theme }) => theme.colors.white};
     font-size: 1.1rem;
   }
+
+
+  @media screen and (min-width: 768px) {
+    margin-top: 1rem;
+  }
 `;
 
 export const Picture = styled.div`
@@ -103,24 +88,4 @@ export const Underline = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   margin-left: 1.2rem;
   margin-top: 1.3rem;
-`;
-
-export const Logout = styled.button`
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    margin-top: 2rem;
-    margin-left: 1rem;
-    
-    img {
-        width: 1.5rem;
-        height: auto;
-    }
-
-    p {
-        color :${({ theme }) => theme.colors.error};
-        margin-left: 1rem;
-        font-size: 1.2rem;
-    }
 `;

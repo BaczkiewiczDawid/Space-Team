@@ -1,45 +1,90 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "assets/images/logo.svg";
 import whiteLogo from "assets/images/logo-white.svg";
 import {
-  StyledBurger,
   Nav,
   NavigationContent,
-  StyledLink,
   LinksContainer,
   Profile,
   Underline,
   Picture,
-  Logout,
 } from "components/Navigation.style";
 import dashboardIcon from "assets/images/grid.svg";
 import chatIcon from "assets/images/message-square.svg";
 import bellIcon from "assets/images/bell.svg";
 import settingsIcon from "assets/images/settings.svg";
 import usersIcon from "assets/images/users.svg";
-import logoutIcon from "assets/images/log-out.svg";
-import { useNavigate } from "react-router-dom";
+import NavLink from "components/NavLink";
+import BurgerMenu from 'components/BurgerMenu';
+import Logout from 'components/Logout';
+import { useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  let navigate = useNavigate();
+  const location = useLocation();
+
+  const iconsList = [
+    {
+      icon: dashboardIcon,
+      alt: "dashboard",
+      text: "Dashboard",
+      href: "/",
+    },
+    {
+      icon: chatIcon,
+      alt: "chat",
+      text: "Chat",
+      href: "/chats",
+    },
+    {
+      icon: bellIcon,
+      alt: "notifications",
+      text: "Notifications",
+      href: "/notifications",
+    },
+    {
+      icon: settingsIcon,
+      alt: "settings",
+      text: "Settings",
+      href: "/settings",
+    },
+    {
+      icon: usersIcon,
+      alt: "friends",
+      text: "Friends",
+      href: "/friends",
+    },
+  ];
 
   const handleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLogout = () => {
-    navigate("/login", { replace: true });
-  };
+  const [width, setWidth] = useState(window.innerWidth);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= 768;
+
+  useEffect(() => {
+    console.log(isMobile);
+    isMobile ? setIsOpen(false) : setIsOpen(true);
+  }, [isMobile]);
 
   return (
-    <Nav>
-      <img src={isOpen ? whiteLogo : logo} alt="space team"></img>
-      <StyledBurger onClick={handleMenu} open={isOpen}>
-        <div />
-        <div />
-        <div />
-      </StyledBurger>
+    <>
+      <Nav>
+        <img src={isOpen && isMobile ? whiteLogo : logo} alt="space team"></img>
+        <BurgerMenu isOpen={isOpen} handleMenu={handleMenu} />
+      </Nav>
       {isOpen ? (
         <NavigationContent>
           <Profile>
@@ -48,34 +93,22 @@ const Navigation = () => {
           </Profile>
           <Underline />
           <LinksContainer>
-            <StyledLink to="/">
-              <img src={dashboardIcon} alt="home" />
-              <p>Home</p>
-            </StyledLink>
-            <StyledLink to="/">
-              <img src={usersIcon} alt="friends" />
-              <p>Friends</p>
-            </StyledLink>
-            <StyledLink to="/">
-              <img src={chatIcon} alt="chat" />
-              <p>Chat</p>
-            </StyledLink>
-            <StyledLink to="/">
-              <img src={bellIcon} alt="notifications" />
-              <p>Notifications</p>
-            </StyledLink>
-            <StyledLink to="/">
-              <img src={settingsIcon} alt="settings" />
-              <p>Settings</p>
-            </StyledLink>
+            {iconsList.map((el) => {
+              return (
+                <NavLink
+                  href={el.href}
+                  icon={el.icon}
+                  alt={el.alt}
+                  text={el.text}
+                  active={el.href === location.pathname}
+                />
+              );
+            })}
           </LinksContainer>
-          <Logout onClick={handleLogout}>
-            <img src={logoutIcon} alt="logout"></img>
-            <p>Log out</p>
-          </Logout>
+          <Logout />
         </NavigationContent>
       ) : null}
-    </Nav>
+    </>
   );
 };
 
