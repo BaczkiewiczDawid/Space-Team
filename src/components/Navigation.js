@@ -5,9 +5,7 @@ import {
   Nav,
   NavigationContent,
   LinksContainer,
-  Profile,
   Underline,
-  Picture,
 } from "components/Navigation.style";
 import dashboardIcon from "assets/images/grid.svg";
 import chatIcon from "assets/images/message-square.svg";
@@ -17,7 +15,9 @@ import usersIcon from "assets/images/users.svg";
 import NavLink from "components/NavLink";
 import BurgerMenu from 'components/BurgerMenu';
 import Logout from 'components/Logout';
+import Profile from 'components/Profile';
 import { useLocation } from 'react-router-dom';
+import Logo from 'components/Logo';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,22 +75,18 @@ const Navigation = () => {
   const isMobile = width <= 768;
 
   useEffect(() => {
-    console.log(isMobile);
     isMobile ? setIsOpen(false) : setIsOpen(true);
   }, [isMobile]);
 
   return (
     <>
       <Nav>
-        <img src={isOpen && isMobile ? whiteLogo : logo} alt="space team"></img>
+        <img src={isOpen && isMobile ? whiteLogo : logo} alt="space team" />
         <BurgerMenu isOpen={isOpen} handleMenu={handleMenu} />
       </Nav>
       {isOpen ? (
         <NavigationContent>
-          <Profile>
-            <Picture></Picture>
-            <p>Jhon Doe</p>
-          </Profile>
+          <Profile></Profile>
           <Underline />
           <LinksContainer>
             {iconsList.map((el) => {

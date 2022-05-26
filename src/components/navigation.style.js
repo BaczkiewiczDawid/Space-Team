@@ -7,16 +7,14 @@ export const Nav = styled.nav`
   width: 95vw;
   padding: 1.6rem;
 
-  img {
-    width: 12.5rem;
-    height: auto;
-    z-index: 999;
-  }
-
   @media screen and (min-width: 768px) {
     margin-left: 32vw;
     width: auto;
     margin-top: 1rem;
+
+    img {
+      display: none;
+    }
   }
 
   @media screen and (min-width: 1080px) {
@@ -29,7 +27,7 @@ export const Nav = styled.nav`
 `;
 
 export const NavigationContent = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -37,7 +35,6 @@ export const NavigationContent = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
 
   @media screen and (min-width: 768px) {
-    position: fixed;
     width: 27vw;
     height: 100vh;
   }
@@ -54,32 +51,6 @@ export const NavigationContent = styled.div`
 export const LinksContainer = styled.div`
   margin-top: 3rem;
   margin-left: 1.2rem;
-`;
-
-export const Profile = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 6.5rem;
-  margin-left: 1.2rem;
-
-  p {
-    margin-left: 2rem;
-    color: ${({ theme }) => theme.colors.white};
-    font-size: 1.1rem;
-  }
-
-
-  @media screen and (min-width: 768px) {
-    margin-top: 1rem;
-  }
-`;
-
-export const Picture = styled.div`
-  width: 45px;
-  height: 45px;
-  background-color: ${({ theme }) => theme.colors.white};
-  border-radius: 100px;
 `;
 
 export const Underline = styled.div`
