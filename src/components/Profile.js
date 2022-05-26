@@ -1,10 +1,10 @@
 import { StyledProfile, Picture } from 'components/Profile.style';
 
-const Profile = ({ dashboard }) => {
+const Profile = ({ dashboard, author }) => {
   return (
     <StyledProfile dashboard={dashboard}>
       <Picture dashboard={dashboard} />
-      <p>Jhon Doe</p>
+      <p>{author}</p>
     </StyledProfile>
   );
 };
