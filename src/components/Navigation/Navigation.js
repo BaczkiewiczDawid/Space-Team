@@ -9,7 +9,7 @@ import {
 } from "components/Navigation/Navigation.style";
 import NavLink from "components/Navigation/NavLink";
 import BurgerMenu from 'components/Navigation/BurgerMenu';
-import Logout from 'components/Logout';
+import Logout from 'components/Navigation/Logout';
 import Profile from 'components/Dashboard/Profile';
 import { useLocation } from 'react-router-dom';
 import NavigationItems from 'data/NavigationItems';
