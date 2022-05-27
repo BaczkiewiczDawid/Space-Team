@@ -9,8 +9,8 @@ import {
   LinkWrapper,
   StyledLink,
   StyledNavLink
-} from "components/Register.style";
-import Form from "components/Form";
+} from "components/Login/Login.style";
+import Form from "components/Login/Form";
 import { useLocation } from "react-router-dom";
 
 const Register = () => {

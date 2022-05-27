@@ -3,7 +3,7 @@ import {
   StyledButton,
   ErrorMessage,
   Input,
-} from "components/Form.style";
+} from "components/Login/Form.style";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
