@@ -1,5 +1,5 @@
-import Navigation from 'components/Navigation';
-import PostsList from 'components/PostsList';
+import Navigation from 'components/Navigation/Navigation';
+import PostsList from 'components/Dashboard/PostsList';
 import styled from 'styled-components';
 
 const DashboardWrapper = styled.div`
@@ -11,10 +11,10 @@ const DashboardWrapper = styled.div`
     }
 `;
 
-const Dashboard = () => {
+const Dashboard = ({ loggedUser }) => {
     return (
         <DashboardWrapper>
-            <Navigation />
+            <Navigation loggedUser={loggedUser} />
             <PostsList />
         </DashboardWrapper>
     )

@@ -1,4 +1,4 @@
-import { StyledProfile, Picture } from 'components/Profile.style';
+import { StyledProfile, Picture } from 'components/Dashboard/Profile.style';
 
 const Profile = ({ dashboard, author }) => {
   return (

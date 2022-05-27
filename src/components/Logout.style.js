@@ -7,6 +7,7 @@ export const LogoutBtn = styled.button`
     border: none;
     margin-top: 2rem;
     margin-left: 1rem;
+    cursor: pointer;
     
     img {
         width: 1.5rem;

@@ -6,55 +6,17 @@ import {
   NavigationContent,
   LinksContainer,
   Underline,
-} from "components/Navigation.style";
-import dashboardIcon from "assets/images/grid.svg";
-import chatIcon from "assets/images/message-square.svg";
-import bellIcon from "assets/images/bell.svg";
-import settingsIcon from "assets/images/settings.svg";
-import usersIcon from "assets/images/users.svg";
-import NavLink from "components/NavLink";
-import BurgerMenu from 'components/BurgerMenu';
+} from "components/Navigation/Navigation.style";
+import NavLink from "components/Navigation/NavLink";
+import BurgerMenu from 'components/Navigation/BurgerMenu';
 import Logout from 'components/Logout';
-import Profile from 'components/Profile';
+import Profile from 'components/Dashboard/Profile';
 import { useLocation } from 'react-router-dom';
-import Logo from 'components/Logo';
+import NavigationItems from 'data/NavigationItems';
 
-const Navigation = () => {
+const Navigation = ({ loggedUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-
-  const iconsList = [
-    {
-      icon: dashboardIcon,
-      alt: "dashboard",
-      text: "Dashboard",
-      href: "/",
-    },
-    {
-      icon: chatIcon,
-      alt: "chat",
-      text: "Chat",
-      href: "/chats",
-    },
-    {
-      icon: bellIcon,
-      alt: "notifications",
-      text: "Notifications",
-      href: "/notifications",
-    },
-    {
-      icon: settingsIcon,
-      alt: "settings",
-      text: "Settings",
-      href: "/settings",
-    },
-    {
-      icon: usersIcon,
-      alt: "friends",
-      text: "Friends",
-      href: "/friends",
-    },
-  ];
 
   const handleMenu = () => {
     setIsOpen(!isOpen);
@@ -65,6 +27,7 @@ const Navigation = () => {
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
   }
+
   useEffect(() => {
     window.addEventListener("resize", handleWindowSizeChange);
     return () => {
@@ -86,10 +49,10 @@ const Navigation = () => {
       </Nav>
       {isOpen ? (
         <NavigationContent>
-          <Profile></Profile>
+          <Profile author={loggedUser}></Profile>
           <Underline />
           <LinksContainer>
-            {iconsList.map((el) => {
+            {NavigationItems.map((el) => {
               return (
                 <NavLink
                   href={el.href}

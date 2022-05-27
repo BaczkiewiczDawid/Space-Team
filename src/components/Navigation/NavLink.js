@@ -1,4 +1,4 @@
-import { StyledLink } from "components/NavLink.style";
+import { StyledLink } from "components/Navigation/NavLink.style";
 
 const Link = ({ icon, alt, text, href, active }) => {
   return (

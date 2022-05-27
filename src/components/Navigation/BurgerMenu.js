@@ -1,4 +1,4 @@
-import { StyledBurger } from 'components/BurgerMenu.style';
+import { StyledBurger } from 'components/Navigation/BurgerMenu.style';
 
 const BurgerMenu = ({ handleMenu, isOpen }) => {
     return (
