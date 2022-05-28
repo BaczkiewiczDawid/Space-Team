@@ -40,7 +40,7 @@ export const NavigationContent = styled.div`
   }
 
   @media screen and (min-width: 1080px) {
-    width: 20vw;
+    width: 22vw;
   }
 
   @media screen and (min-width: 1440px) {

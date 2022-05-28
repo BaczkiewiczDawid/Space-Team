@@ -1,23 +1,21 @@
-import Navigation from 'components/Navigation/Navigation';
-import PostsList from 'components/Dashboard/PostsList';
-import styled from 'styled-components';
+import Navigation from "components/Navigation/Navigation";
+import PostsList from "components/Dashboard/PostsList";
+import NewPost from "components/Dashboard/NewPost";
+import { DashboardWrapper, Wrapper, Logo } from "components/Dashboard/Dashboard.style";
+import logo from "assets/images/logo.svg";
 
-const DashboardWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-
-    @media screen and (min-width: 768px) {
-        flex-direction: row;
-    }
-`;
 
 const Dashboard = ({ loggedUser }) => {
-    return (
-        <DashboardWrapper>
-            <Navigation loggedUser={loggedUser} />
-            <PostsList />
-        </DashboardWrapper>
-    )
-}
+  return (
+    <DashboardWrapper>
+      <Navigation loggedUser={loggedUser} />
+      <Wrapper>
+        <Logo src={logo} alt="space team" />
+        <NewPost loggedUser={loggedUser} />
+        <PostsList />
+      </Wrapper>
+    </DashboardWrapper>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
