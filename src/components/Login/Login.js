@@ -13,7 +13,7 @@ import {
 import Form from "components/Login/Form";
 import { useLocation } from "react-router-dom";
 
-const Register = () => {
+const Register = ({ setIsAuthenticated, isAuthenticated }) => {
   const location = useLocation();
 
   return (
@@ -30,7 +30,7 @@ const Register = () => {
             <StyledNavLink to="/register" purple={location.pathname === "/register"}>Sign up</StyledNavLink>
           </LinkWrapper>
         </Navigation>
-        <Form location={location} />
+        <Form location={location} setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />
         {location.pathname === "/register" ? (
           <StyledLink to="/login">
             Already have an account?<span> Login now!</span>

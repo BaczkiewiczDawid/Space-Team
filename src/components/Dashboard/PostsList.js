@@ -12,14 +12,13 @@ const PostsList = () => {
     });
   }, []);
 
-  console.log(posts);
-
   return (
     <Wrapper>
       <PostsContainer>
         {posts.map((el) => {
           return (
             <Post
+              key={el.id}
               author={el.author}
               description={el.description}
               img={el.img}
