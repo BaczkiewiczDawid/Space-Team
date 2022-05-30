@@ -20,6 +20,7 @@ const PostsList = () => {
         {posts.map((el) => {
           return (
             <Post
+              key={el.id}
               author={el.author}
               description={el.description}
               img={el.img}

@@ -55,6 +55,7 @@ const Navigation = ({ loggedUser }) => {
             {NavigationItems.map((el) => {
               return (
                 <NavLink
+                  key={el.icon}
                   href={el.href}
                   icon={el.icon}
                   alt={el.alt}
