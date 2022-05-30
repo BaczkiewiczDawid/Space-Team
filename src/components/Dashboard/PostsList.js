@@ -12,8 +12,6 @@ const PostsList = () => {
     });
   }, []);
 
-  console.log(posts);
-
   return (
     <Wrapper>
       <PostsContainer>
