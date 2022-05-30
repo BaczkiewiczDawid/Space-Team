@@ -1,9 +1,12 @@
 import Navigation from "components/Navigation/Navigation";
 import PostsList from "components/Dashboard/PostsList";
 import NewPost from "components/Dashboard/NewPost";
-import { DashboardWrapper, Wrapper, Logo } from "components/Dashboard/Dashboard.style";
+import {
+  DashboardWrapper,
+  Wrapper,
+  Logo,
+} from "components/Dashboard/Dashboard.style";
 import logo from "assets/images/logo.svg";
-
 
 const Dashboard = ({ loggedUser }) => {
   return (

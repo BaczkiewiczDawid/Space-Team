@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Input = styled.input`
+const StyledInput = styled.input`
     width: 85vw;
     padding: 1.5rem 2rem;
     border-radius: 15px;
@@ -11,7 +11,7 @@ export const Input = styled.input`
 
     @media screen and (min-width: 768px) {
         width: 50vw;
-        margin-top: 3rem;
+        margin-top: ${props => props.primary ? '3rem' : '0'};
     }
 
     @media screen and (min-width: 1080px) {
@@ -22,3 +22,18 @@ export const Input = styled.input`
         width: 30vw;
     }
 `;
+
+const Input = ({ text, placeholder, onKeyDown, onChange, maxLength, primary }) => {
+    return (
+        <StyledInput
+        type={text}
+        placeholder={placeholder}
+        onKeyDown={onKeyDown}
+        onChange={onChange}
+        maxLength={maxLength}
+        primary={primary}
+      />
+    )
+}
+
+export default Input;
