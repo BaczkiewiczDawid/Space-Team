@@ -8,11 +8,12 @@ import {
   Underline,
 } from "components/Navigation/Navigation.style";
 import NavLink from "components/Navigation/NavLink";
-import BurgerMenu from 'components/Navigation/BurgerMenu';
-import Logout from 'components/Navigation/Logout';
-import Profile from 'components/Dashboard/Profile';
-import { useLocation } from 'react-router-dom';
-import NavigationItems from 'data/NavigationItems';
+import BurgerMenu from "components/Navigation/BurgerMenu";
+import Logout from "components/Navigation/Logout";
+import Profile from "components/Dashboard/Profile";
+import { useLocation } from "react-router-dom";
+import NavigationItems from "data/NavigationItems";
+import SearchBar from "components/Navigation/SearchBar";
 
 const Navigation = ({ loggedUser }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,6 +52,7 @@ const Navigation = ({ loggedUser }) => {
         <NavigationContent>
           <Profile author={loggedUser}></Profile>
           <Underline />
+          <SearchBar />
           <LinksContainer>
             {NavigationItems.map((el) => {
               return (
