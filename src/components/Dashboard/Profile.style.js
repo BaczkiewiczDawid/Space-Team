@@ -5,6 +5,8 @@ export const StyledProfile = styled.div`
   flex-direction: row;
   align-items: center;
   margin-left: ${props => props.dashboard ? '0' : '1.2rem'};
+  z-index: 4;
+  margin-top: ${props => props.search ? '1rem' : '0'};
 
   p {
     margin-left: ${props => props.dashboard ? '1.5rem' : '2rem'};
