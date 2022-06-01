@@ -1,9 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import { Wrapper, AccountsList } from "components/Navigation/SearchBar.style";
 import Profile from "components/Dashboard/Profile";
+import Axios from "axios";
 
 const SearchBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [userData, setUserData] = useState("");
+  const [usersList, setUsersList] = useState([]);
 
   const useOutsideAlerter = (ref) => {
     useEffect(() => {
@@ -17,24 +20,41 @@ const SearchBar = () => {
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }, [ref]);
-  }
+  };
+
+  const handleUserData = (e) => {
+    setUserData(e.target.value);
+  };
+
+  useEffect(() => {
+    Axios.post("http://localhost:5000/api/search", {
+      userData: userData,
+    }).then((response) => {
+      setUsersList(response.data);
+    });
+  }, [userData]);
 
   const wrapperRef = useRef();
   useOutsideAlerter(wrapperRef);
 
-  const handleOpenSearchBar = () => {
+  const handleOpenSearchBar = (e) => {
     setIsOpen(true);
   };
 
   return (
     <Wrapper ref={wrapperRef}>
-      <input type="text" placeholder="Search" onClick={handleOpenSearchBar} />
+      <input
+        type="text"
+        placeholder="Search"
+        onClick={handleOpenSearchBar}
+        onChange={handleUserData}
+      />
       <AccountsList isOpen={isOpen}>
-        <Profile author="Dawid Bączkiewicz" dashboard search />
-        <Profile author="Karol Jaki" dashboard search />
-        <Profile author="John Doe" dashboard search />
-        <Profile author="Dawson B" dashboard search />
-        <Profile author="Karol Pal" dashboard search />
+        {usersList.map((user) => {
+          return (
+            <Profile key={user.id} author={user.username} dashboard search />
+          );
+        })}
       </AccountsList>
     </Wrapper>
   );
