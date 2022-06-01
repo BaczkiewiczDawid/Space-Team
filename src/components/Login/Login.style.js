@@ -22,7 +22,11 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 25vw;
-    margin-left: 20rem;
+    margin-left: 12rem;
+  }
+
+  @media screen and (min-width: 950px) {
+    margin-left: 15rem;
   }
 
   @media screen and (min-width: 1080px) {
