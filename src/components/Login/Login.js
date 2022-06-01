@@ -8,7 +8,8 @@ import {
   Navigation,
   LinkWrapper,
   StyledLink,
-  StyledNavLink
+  StyledNavLink,
+  ImageWrapper
 } from "components/Login/Login.style";
 import Form from "components/Login/Form";
 import { useLocation } from "react-router-dom";
@@ -18,19 +19,32 @@ const Register = ({ setIsAuthenticated, isAuthenticated }) => {
 
   return (
     <Container>
-      <StyledBackground src={backgroundImage} alt="wild forest" />
+      <ImageWrapper>
+        <StyledBackground src={backgroundImage} alt="wild forest" />
+      </ImageWrapper>
       <Wrapper>
         <Logo href="#">
           <img src={logo} alt="space team" />
         </Logo>
-        <Navigation register={location.pathname === '/register'}>
+        <Navigation register={location.pathname === "/register"}>
           <div></div>
           <LinkWrapper>
-            <StyledNavLink to="/login" purple={location.pathname === "/login"} >Sign in</StyledNavLink>
-            <StyledNavLink to="/register" purple={location.pathname === "/register"}>Sign up</StyledNavLink>
+            <StyledNavLink to="/login" purple={location.pathname === "/login"}>
+              Sign in
+            </StyledNavLink>
+            <StyledNavLink
+              to="/register"
+              purple={location.pathname === "/register"}
+            >
+              Sign up
+            </StyledNavLink>
           </LinkWrapper>
         </Navigation>
-        <Form location={location} setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />
+        <Form
+          location={location}
+          setIsAuthenticated={setIsAuthenticated}
+          isAuthenticated={isAuthenticated}
+        />
         {location.pathname === "/register" ? (
           <StyledLink to="/login">
             Already have an account?<span> Login now!</span>
