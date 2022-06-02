@@ -5,6 +5,7 @@ import { GlobalStyle } from "assets/styles/GlobalStyle";
 import Login from "components/Login/Login";
 import Dashboard from "components/Dashboard/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UserProfile from 'components/UserProfile/UserProfile';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState("");
@@ -21,6 +22,7 @@ function App() {
             path="/"
             element={<Dashboard isAuthenticated={isAuthenticated} />}
           />
+          <Route path={`/profile/:userId`} element={<UserProfile isAuthenticated={isAuthenticated} />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

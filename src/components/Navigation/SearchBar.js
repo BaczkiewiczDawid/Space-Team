@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Wrapper, AccountsList } from "components/Navigation/SearchBar.style";
+import { Wrapper, AccountsList, StyledLink } from "components/Navigation/SearchBar.style";
 import Profile from "components/Dashboard/Profile";
 import Axios from "axios";
 
@@ -41,6 +41,8 @@ const SearchBar = () => {
     setIsOpen(true);
   };
 
+  console.log(usersList)
+
   return (
     <Wrapper ref={wrapperRef}>
       <input
@@ -52,7 +54,9 @@ const SearchBar = () => {
       <AccountsList isOpen={isOpen}>
         {usersList.map((user) => {
           return (
-            <Profile key={user.id} author={user.username} dashboard search />
+            <StyledLink to={`/profile/${user.id}`}>
+              <Profile key={user.id} author={user.username} dashboard search />
+            </StyledLink>
           );
         })}
       </AccountsList>

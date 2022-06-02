@@ -22,11 +22,20 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 25vw;
-    margin-left: 20vw;
+    margin-left: 12rem;
+  }
+
+  @media screen and (min-width: 950px) {
+    margin-left: 15rem;
   }
 
   @media screen and (min-width: 1080px) {
     margin-top: 0;
+    margin-left: 23rem;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-left: 29rem;
   }
 `;
 
@@ -105,12 +114,27 @@ export const StyledNavLink = styled(Link)`
     }
 `;
 
+export const ImageWrapper = styled.div`
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    width: 50vw;
+    height: 100vh;
+    direction: rtl;
+  }
+
+  @media screen and (min-width: 1080px) {
+    width: 45vw;
+  }
+`;
+
 export const StyledBackground = styled.img`
   display: none;
 
   @media screen and (min-width: 768px) {
     display: block;
     height: 100vh;
-    width: auto;
+    object-fit: cover;
   }
 `;
