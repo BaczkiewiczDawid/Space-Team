@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import SearchIcon from "assets/images/search-icon.svg";
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -60,4 +61,8 @@ export const AccountsList = styled.div`
   &:nth-child(n + 1) {
     margin-top: 1rem;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
 `;

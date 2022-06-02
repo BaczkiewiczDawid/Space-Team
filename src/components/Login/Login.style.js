@@ -121,7 +121,6 @@ export const ImageWrapper = styled.div`
     display: block;
     width: 50vw;
     height: 100vh;
-    background-color: red;
     direction: rtl;
   }
 
