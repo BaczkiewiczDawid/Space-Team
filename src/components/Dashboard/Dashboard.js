@@ -19,12 +19,14 @@ const Dashboard = ({ isAuthenticated }) => {
     }
   }, [isAuthenticated, navigate])
 
+  console.log(isAuthenticated.picture)
+
     return (
       <DashboardWrapper>
-        <Navigation loggedUser={isAuthenticated.loggedUser} />
+        <Navigation picture={isAuthenticated.picture} loggedUser={isAuthenticated.loggedUser} />
         <Wrapper>
           <Logo src={logo} alt="space team" />
-          <NewPost loggedUser={isAuthenticated.loggedUser} />
+          <NewPost loggedUser={isAuthenticated.loggedUser} userID={isAuthenticated.id} />
           <PostsList />
         </Wrapper>
       </DashboardWrapper>

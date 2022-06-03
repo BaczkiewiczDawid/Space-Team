@@ -1,12 +1,12 @@
 import Profile from "components/Dashboard/Profile";
-import { Description, PostWrapper } from "components/Dashboard/Post.style";
+import { Description, PostWrapper, PostImage } from "components/Dashboard/Post.style";
 
-const Post = ({ img, description, author }) => {
+const Post = ({ img, description, author, picture }) => {
   return (
     <PostWrapper>
-      <Profile author={author} dashboard />
+      <Profile author={author} picture={picture} dashboard />
       <Description>{description}</Description>
-      <img src={img} alt="img" />
+      <PostImage src={img} alt="img" />
     </PostWrapper>
   );
 };

@@ -76,6 +76,8 @@ const Form = ({ location, setIsAuthenticated }) => {
           setIsAuthenticated({
             authenticated: true,
             loggedUser: response.data[0].username,
+            id: response.data[0].id,
+            picture: response.data[0].picture
           });
 
           navigate("/", { replace: true });

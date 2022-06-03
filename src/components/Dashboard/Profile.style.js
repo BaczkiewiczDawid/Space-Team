@@ -27,6 +27,18 @@ export const StyledProfile = styled.div`
 export const Picture = styled.div`
   width: 45px;
   height: 45px;
-  background-color: ${props => props.dashboard ? 'black' : props.theme.colors.white};
+  background-color: transparent;
   border-radius: 100px;
+  position: relative;
+`;
+
+export const StyledProfilePicture = styled.img`
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+  box-shadow: 8px 8px 26px -16px rgba(42, 42, 42, 1);
 `;

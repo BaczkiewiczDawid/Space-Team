@@ -3,8 +3,8 @@ import Navigation from "components/Navigation/Navigation";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Axios from "axios";
-import Profile from 'components/UserProfile/Profile';
-import Post from 'components/Dashboard/Post';
+import Profile from "components/UserProfile/Profile";
+import Post from "components/Dashboard/Post";
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,8 +32,6 @@ const ProfileContent = styled.section`
   }
 `;
 
-
-
 const UserProfile = ({ isAuthenticated }) => {
   const [searchedUser, setSearchedUser] = useState("");
   const [postsList, setPostsList] = useState([]);
@@ -59,24 +57,33 @@ const UserProfile = ({ isAuthenticated }) => {
   }, [userId]);
 
   useEffect(() => {
-    Axios.post('http://localhost:5000/api/user-posts', {
-      userData: searchedUser.username
+    Axios.post("http://localhost:5000/api/user-posts", {
+      userData: searchedUser.username,
     }).then((response) => {
-      setPostsList(response.data)
-    })
-  }, [searchedUser.username])
+      setPostsList(response.data);
+    });
+  }, [searchedUser.username]);
 
   return (
     <Wrapper>
-      <Navigation loggedUser={isAuthenticated.loggedUser} />
+      <Navigation picture={isAuthenticated.picture} loggedUser={isAuthenticated.loggedUser} />
       <ProfileContent>
-        <Profile isAuthenticated={isAuthenticated} searchedUser={searchedUser} />
+        <Profile
+          isAuthenticated={isAuthenticated}
+          searchedUser={searchedUser}
+        />
         <h3>Recent posts</h3>
-        {postsList && postsList.map((post) => {
-          return (
-            <Post key={post.id} author={post.author} description={post.description} img={post.img} />
-          )
-        })}
+        {postsList &&
+          postsList.map((post) => {
+            return (
+              <Post
+                key={post.id}
+                author={post.author}
+                description={post.description}
+                img={post.img}
+              />
+            );
+          })}
       </ProfileContent>
     </Wrapper>
   );

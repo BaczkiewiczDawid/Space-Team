@@ -12,7 +12,7 @@ const Modal = ({
   isModalOpen,
   setIsModalOpen,
   postDescription,
-  loggedUser,
+  userID,
 }) => {
   const [imageURL, setImageURL] = useState("");
 
@@ -25,7 +25,7 @@ const Modal = ({
       setIsModalOpen(false);
 
       const newPost = {
-        author: loggedUser,
+        author: userID,
         description: postDescription,
         img: imageURL,
       };

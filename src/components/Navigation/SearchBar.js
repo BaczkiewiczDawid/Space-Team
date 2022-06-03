@@ -1,9 +1,13 @@
 import { useState, useRef, useEffect } from "react";
-import { Wrapper, AccountsList, StyledLink } from "components/Navigation/SearchBar.style";
+import {
+  Wrapper,
+  AccountsList,
+  StyledLink,
+} from "components/Navigation/SearchBar.style";
 import Profile from "components/Dashboard/Profile";
 import Axios from "axios";
 
-const SearchBar = () => {
+const SearchBar = ({ picture }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [userData, setUserData] = useState("");
   const [usersList, setUsersList] = useState([]);
@@ -32,7 +36,7 @@ const SearchBar = () => {
     }).then((response) => {
       setUsersList(response.data);
     });
-  }, [userData]);
+  }, [userData, isOpen, usersList]);
 
   const wrapperRef = useRef();
   useOutsideAlerter(wrapperRef);
@@ -42,9 +46,9 @@ const SearchBar = () => {
   };
 
   const handleClearInput = () => {
-    setUserData('');
+    setUserData("");
     setIsOpen(false);
-  }
+  };
 
   return (
     <Wrapper ref={wrapperRef}>
@@ -58,8 +62,17 @@ const SearchBar = () => {
       <AccountsList isOpen={isOpen}>
         {usersList.map((user) => {
           return (
-            <StyledLink to={`/profile/${user.id}`} key={user.id} onClick={handleClearInput}>
-              <Profile author={user.username} dashboard search />
+            <StyledLink
+              to={`/profile/${user.id}`}
+              key={user.id}
+              onClick={handleClearInput}
+            >
+              <Profile
+                picture={user.picture}
+                author={user.username}
+                dashboard
+                search
+              />
             </StyledLink>
           );
         })}

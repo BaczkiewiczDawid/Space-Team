@@ -9,14 +9,20 @@ import editIcon from "assets/images/edit-icon.svg";
 import plusIcon from "assets/images/plus-icon.svg";
 
 const Profile = ({ isAuthenticated, searchedUser }) => {
+  const handleEditProfile = () => {
+    
+  }
+
   return (
     <StyledProfile>
-      <Picture />
+      <Picture>
+        <img src={isAuthenticated.picture} alt="profile" />
+      </Picture>
       <Details>
         <Container>
           <h1>{searchedUser.username}</h1>
           {isAuthenticated.loggedUser === searchedUser.username ? (
-            <img src={editIcon} alt="edit profile" />
+            <img src={editIcon} alt="edit profile" onClick={handleEditProfile} />
           ) : null}
         </Container>
         <Button>

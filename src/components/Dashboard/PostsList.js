@@ -19,9 +19,10 @@ const PostsList = () => {
           return (
             <Post
               key={el.id}
-              author={el.author}
+              author={el.username}
               description={el.description}
               img={el.img}
+              picture={el.picture}
             />
           );
         })}
