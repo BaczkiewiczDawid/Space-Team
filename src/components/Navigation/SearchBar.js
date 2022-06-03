@@ -41,7 +41,10 @@ const SearchBar = () => {
     setIsOpen(true);
   };
 
-  console.log(usersList)
+  const handleClearInput = () => {
+    setUserData('');
+    setIsOpen(false);
+  }
 
   return (
     <Wrapper ref={wrapperRef}>
@@ -50,12 +53,13 @@ const SearchBar = () => {
         placeholder="Search"
         onClick={handleOpenSearchBar}
         onChange={handleUserData}
+        value={userData}
       />
       <AccountsList isOpen={isOpen}>
         {usersList.map((user) => {
           return (
-            <StyledLink to={`/profile/${user.id}`}>
-              <Profile key={user.id} author={user.username} dashboard search />
+            <StyledLink to={`/profile/${user.id}`} key={user.id} onClick={handleClearInput}>
+              <Profile author={user.username} dashboard search />
             </StyledLink>
           );
         })}

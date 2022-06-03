@@ -14,7 +14,7 @@ const Profile = ({ isAuthenticated, searchedUser }) => {
       <Picture />
       <Details>
         <Container>
-          <h2>{searchedUser.username}</h2>
+          <h1>{searchedUser.username}</h1>
           {isAuthenticated.loggedUser === searchedUser.username ? (
             <img src={editIcon} alt="edit profile" />
           ) : null}

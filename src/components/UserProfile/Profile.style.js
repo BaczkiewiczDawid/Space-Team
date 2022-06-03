@@ -23,7 +23,7 @@ export const Details = styled.div`
 export const Container = styled.div`
   display: flex;
 
-  h2 {
+  h1 {
     margin-top: 1rem;
     color: ${({ theme }) => theme.colors.black};
   }
@@ -44,6 +44,7 @@ export const Button = styled.button`
   cursor: pointer;
   position: relative;
   border-radius: 5px;
+  z-index: 1;
 
   img {
     position: absolute;
