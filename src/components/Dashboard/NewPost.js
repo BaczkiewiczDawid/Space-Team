@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "components/Dashboard/Modal";
 import Input from "components/Dashboard/Input";
 
-const NewPost = ({ loggedUser }) => {
+const NewPost = ({ loggedUser, userID }) => {
   const [postDescription, setPostDescription] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -32,7 +32,7 @@ const NewPost = ({ loggedUser }) => {
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         postDescription={postDescription}
-        loggedUser={loggedUser}
+        userID={userID}
       />
     </>
   );

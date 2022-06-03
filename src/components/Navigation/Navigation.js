@@ -15,7 +15,7 @@ import { useLocation } from "react-router-dom";
 import NavigationItems from "data/NavigationItems";
 import SearchBar from "components/Navigation/SearchBar";
 
-const Navigation = ({ loggedUser }) => {
+const Navigation = ({ loggedUser, picture }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -50,9 +50,9 @@ const Navigation = ({ loggedUser }) => {
       </Nav>
       {isOpen ? (
         <NavigationContent>
-          <Profile author={loggedUser}></Profile>
+          <Profile picture={picture} author={loggedUser}></Profile>
           <Underline />
-          <SearchBar />
+          <SearchBar picture={picture} />
           <LinksContainer>
             {NavigationItems.map((el) => {
               return (

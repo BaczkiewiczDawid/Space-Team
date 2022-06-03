@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledProfile = styled.header`
   display: flex;
@@ -10,8 +10,18 @@ export const StyledProfile = styled.header`
 export const Picture = styled.div`
   width: 7rem;
   height: 7rem;
-  background-color: ${({ theme }) => theme.colors.black};
+  background-color: transparent;
   border-radius: 100px;
+  position: relative;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 100px;
+    box-shadow: 8px 8px 26px -16px rgba(42, 42, 42, 1);
+  }
 `;
 
 export const Details = styled.div`
@@ -23,7 +33,7 @@ export const Details = styled.div`
 export const Container = styled.div`
   display: flex;
 
-  h2 {
+  h1 {
     margin-top: 1rem;
     color: ${({ theme }) => theme.colors.black};
   }
@@ -44,6 +54,7 @@ export const Button = styled.button`
   cursor: pointer;
   position: relative;
   border-radius: 5px;
+  z-index: 1;
 
   img {
     position: absolute;

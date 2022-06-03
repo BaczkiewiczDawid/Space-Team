@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PostWrapper = styled.article`
   margin-top: 1rem;
@@ -7,12 +7,6 @@ export const PostWrapper = styled.article`
   padding: 1.6rem;
   border: 1px solid rgba(42, 42, 42, 0.2);
   box-shadow: 8px 8px 26px -16px rgba(42, 42, 42, 1);
-
-  img {
-    width: 70%;
-    height: auto;
-    margin-top: 2rem;
-  }
 
   @media screen and (min-width: 768px) {
     width: 50vw;
@@ -33,6 +27,12 @@ export const PostWrapper = styled.article`
   @media screen and (min-width: 1440px) {
     width: 30vw;
   }
+`;
+
+export const PostImage = styled.img`
+  width: 70%;
+  height: auto;
+  margin-top: 2rem;
 `;
 
 export const Description = styled.p`

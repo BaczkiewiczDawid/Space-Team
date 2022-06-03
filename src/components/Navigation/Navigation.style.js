@@ -33,6 +33,7 @@ export const NavigationContent = styled.div`
   width: 100vw;
   height: 101vh;
   background-color: ${({ theme }) => theme.colors.background};
+  z-index: 5;
 
   @media screen and (min-width: 768px) {
     width: 27vw;
