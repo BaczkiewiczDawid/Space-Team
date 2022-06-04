@@ -5,10 +5,9 @@ import NewPost from "components/Dashboard/NewPost";
 import {
   DashboardWrapper,
   Wrapper,
-  Logo,
 } from "components/Dashboard/Dashboard.style";
-import logo from "assets/images/logo.svg";
 import { useNavigate } from "react-router-dom";
+import Logo from 'components/Dashboard/Logo';
 
 const Dashboard = ({ isAuthenticated }) => {
   let navigate = useNavigate();
@@ -25,7 +24,7 @@ const Dashboard = ({ isAuthenticated }) => {
       <DashboardWrapper>
         <Navigation picture={isAuthenticated.picture} loggedUser={isAuthenticated.loggedUser} />
         <Wrapper>
-          <Logo src={logo} alt="space team" />
+          <Logo />
           <NewPost loggedUser={isAuthenticated.loggedUser} userID={isAuthenticated.id} />
           <PostsList />
         </Wrapper>

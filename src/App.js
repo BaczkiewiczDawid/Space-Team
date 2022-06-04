@@ -6,6 +6,7 @@ import Login from "components/Login/Login";
 import Dashboard from "components/Dashboard/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserProfile from 'components/UserProfile/UserProfile';
+import Settings from 'components/Settings/Settings';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState("");
@@ -23,6 +24,7 @@ function App() {
             element={<Dashboard isAuthenticated={isAuthenticated} />}
           />
           <Route path={`/profile/:userId`} element={<UserProfile isAuthenticated={isAuthenticated} />} />
+          <Route path={'/settings'} element={<Settings isAuthenticated={isAuthenticated} />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
