@@ -1,47 +1,5 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-  }
-`;
-
-export const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.black};
-  margin-top: 2rem;
-  font-size: 1.8rem;
-`;
-
-export const Container = styled.div`
-  margin-left: 1rem;
-`;
-
-export const SettingsContent = styled.section`
-  h3 {
-    font-weight: 300;
-    margin-top: 4rem;
-  }
-
-  h4 {
-    margin-top: 4rem;
-    font-size: 1.4rem;
-  }
-`;
-
-export const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 3rem;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-  }
-`;
-
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -86,3 +44,14 @@ export const InputContainer = styled.div`
     }
   }
 `;
+
+const Input = ({ loggedUserData, label, userValue }) => {
+  return (
+    <InputContainer>
+      <label htmlFor="">{label}</label>
+      <input type="text" value={userValue} />
+    </InputContainer>
+  );
+};
+
+export default Input;
