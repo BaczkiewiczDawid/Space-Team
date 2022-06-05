@@ -9,7 +9,13 @@ import UserProfile from 'components/UserProfile/UserProfile';
 import Settings from 'components/Settings/Settings';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState('');
+
+  if (isAuthenticated !== '') {
+    localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
+    const data = localStorage.getItem('isAuthenticated');
+    console.log(JSON.parse(data));
+  }
 
   return (
     <ThemeProvider theme={theme}>

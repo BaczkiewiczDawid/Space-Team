@@ -8,7 +8,10 @@ import {
 import Logo from 'components/Dashboard/Logo';
 import useAuthenticate from 'hooks/useAuthenticate';
 
-const Dashboard = ({ isAuthenticated }) => {
+const Dashboard = () => {
+  const data = localStorage.getItem('isAuthenticated');
+  const isAuthenticated = JSON.parse(data);
+
   useAuthenticate(isAuthenticated);
 
     return (

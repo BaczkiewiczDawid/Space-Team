@@ -14,7 +14,10 @@ import Profile from 'components/Settings/Profile';
 import Button from 'components/Settings/Button';
 import useAuthenticate from 'hooks/useAuthenticate';
 
-const Settings = ({ isAuthenticated }) => {
+const Settings = () => {
+  const data = localStorage.getItem('isAuthenticated');
+  const isAuthenticated = JSON.parse(data);
+
   useAuthenticate(isAuthenticated);
 
   const [loggedUserData, setLoggedUserData] = useState("");

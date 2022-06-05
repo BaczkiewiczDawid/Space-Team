@@ -34,7 +34,7 @@ const validate = (values) => {
   return errors;
 };
 
-const Form = ({ location, setIsAuthenticated }) => {
+const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
   let navigate = useNavigate();
 
   const formik = useFormik({
@@ -79,7 +79,7 @@ const Form = ({ location, setIsAuthenticated }) => {
             id: response.data[0].id,
             picture: response.data[0].picture
           });
-
+          
           navigate("/", { replace: true });
         }
       });
