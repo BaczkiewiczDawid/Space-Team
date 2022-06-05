@@ -1,31 +1,24 @@
-import { useEffect } from 'react';
 import Navigation from "components/Navigation/Navigation";
 import PostsList from "components/Dashboard/PostsList";
 import NewPost from "components/Dashboard/NewPost";
 import {
   DashboardWrapper,
   Wrapper,
-  Logo,
 } from "components/Dashboard/Dashboard.style";
-import logo from "assets/images/logo.svg";
-import { useNavigate } from "react-router-dom";
+import Logo from 'components/Dashboard/Logo';
+import useAuthenticate from 'hooks/useAuthenticate';
 
-const Dashboard = ({ isAuthenticated }) => {
-  let navigate = useNavigate();
+const Dashboard = () => {
+  const data = localStorage.getItem('isAuthenticated');
+  const isAuthenticated = JSON.parse(data);
 
-  useEffect(() => {
-    if (isAuthenticated.authenticated === false || isAuthenticated.loggedUser === undefined) {
-      navigate('/login', {replace: true})
-    }
-  }, [isAuthenticated, navigate])
-
-  console.log(isAuthenticated.picture)
+  useAuthenticate(isAuthenticated);
 
     return (
       <DashboardWrapper>
         <Navigation picture={isAuthenticated.picture} loggedUser={isAuthenticated.loggedUser} />
         <Wrapper>
-          <Logo src={logo} alt="space team" />
+          <Logo />
           <NewPost loggedUser={isAuthenticated.loggedUser} userID={isAuthenticated.id} />
           <PostsList />
         </Wrapper>

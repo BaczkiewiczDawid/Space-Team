@@ -7,10 +7,13 @@ import {
 } from "components/UserProfile/Profile.style";
 import editIcon from "assets/images/edit-icon.svg";
 import plusIcon from "assets/images/plus-icon.svg";
+import { useNavigate } from "react-router-dom";
 
 const Profile = ({ isAuthenticated, searchedUser }) => {
+  const navigate = useNavigate();
+
   const handleEditProfile = () => {
-    
+    navigate('/settings', {replace: true})
   }
 
   return (

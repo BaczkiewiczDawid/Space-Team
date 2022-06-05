@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Axios from "axios";
 import Profile from "components/UserProfile/Profile";
 import Post from "components/Dashboard/Post";
+import useAuthenticate from "hooks/useAuthenticate";
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,10 +33,15 @@ const ProfileContent = styled.section`
   }
 `;
 
-const UserProfile = ({ isAuthenticated }) => {
+const UserProfile = () => {
   const [searchedUser, setSearchedUser] = useState("");
   const [postsList, setPostsList] = useState([]);
   let { userId } = useParams();
+
+  const data = localStorage.getItem("isAuthenticated");
+  const isAuthenticated = JSON.parse(data);
+
+  useAuthenticate(isAuthenticated);
 
   let navigate = useNavigate();
 
@@ -66,7 +72,10 @@ const UserProfile = ({ isAuthenticated }) => {
 
   return (
     <Wrapper>
-      <Navigation picture={isAuthenticated.picture} loggedUser={isAuthenticated.loggedUser} />
+      <Navigation
+        picture={isAuthenticated.picture}
+        loggedUser={isAuthenticated.loggedUser}
+      />
       <ProfileContent>
         <Profile
           isAuthenticated={isAuthenticated}
