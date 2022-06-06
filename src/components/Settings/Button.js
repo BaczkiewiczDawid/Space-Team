@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledButton = styled.button`
   background-color: ${({ theme }) => theme.colors.purple};
@@ -15,8 +15,12 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = ({ value, secondary, onClick }) => {
-    return <StyledButton secondary={secondary} onClick={onClick}>{value}</StyledButton>
-}
+const Button = ({ value, secondary, onClick, type }) => {
+  return (
+    <StyledButton secondary={secondary} onClick={onClick} type={type}>
+      {value}
+    </StyledButton>
+  );
+};
 
 export default Button;

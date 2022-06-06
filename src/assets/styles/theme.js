@@ -6,6 +6,7 @@ export const theme = {
         darkPurple: '#5e4ad9',
         grey: '5a5a5a',
         lightGrey: '9c9c9c',
+        green: '#2dd636',
         error: '#ff4747',
         background: '#262A31'
     },

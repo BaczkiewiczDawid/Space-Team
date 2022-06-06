@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navigation from "components/Navigation/Navigation";
 import Logo from "components/Dashboard/Logo";
 import Axios from "axios";
+import Button from 'components/Settings/Button';
 import {
   Wrapper,
   Title,
@@ -10,7 +11,6 @@ import {
 } from "components/Settings/Settings.style";
 import Form from 'components/Settings/Form';
 import Profile from "components/Settings/Profile";
-import Button from "components/Settings/Button";
 import useAuthenticate from "hooks/useAuthenticate";
 
 const Settings = () => {
@@ -20,12 +20,6 @@ const Settings = () => {
 
   useAuthenticate(isAuthenticated);
   const userData = isAuthenticated.id;
-
-  const handleSaveData = () => {
-    Axios.post("http://localhost:5000/api/set-data", {
-      userData: loggedUserData,
-    });
-  };
 
   useEffect(() => {
     Axios.post("http://localhost:5000/api/get-user", {
@@ -48,8 +42,7 @@ const Settings = () => {
         <SettingsContent>
           <h3>Avatar</h3>
           <Profile loggedUserData={loggedUserData} />
-          <Form loggedUserData={loggedUserData} setLoggedUserData={setLoggedUserData} />
-          <Button secondary="secondary" value="Save" onClick={handleSaveData} />
+          <Form loggedUserData={loggedUserData} setLoggedUserData={setLoggedUserData} />    
         </SettingsContent>
       </Container>
     </Wrapper>
