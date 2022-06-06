@@ -31,12 +31,14 @@ const SearchBar = ({ picture }) => {
   };
 
   useEffect(() => {
-    Axios.post("http://localhost:5000/api/search", {
-      userData: userData,
-    }).then((response) => {
-      setUsersList(response.data);
-    });
-  }, [userData, isOpen, usersList]);
+    if (userData !== "" || isOpen) {
+      Axios.post("http://localhost:5000/api/search", {
+        userData: userData,
+      }).then((response) => {
+        setUsersList(response.data);
+      });
+    }
+  }, [userData, isOpen]);
 
   const wrapperRef = useRef();
   useOutsideAlerter(wrapperRef);
