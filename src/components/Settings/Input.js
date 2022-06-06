@@ -45,11 +45,24 @@ export const InputContainer = styled.div`
   }
 `;
 
-const Input = ({ loggedUserData, label, userValue }) => {
+const Input = ({
+  loggedUserData,
+  label,
+  userValue,
+  onChange,
+  disabled,
+  name,
+}) => {
   return (
     <InputContainer>
       <label htmlFor="">{label}</label>
-      <input type="text" value={userValue} />
+      <input
+        type="text"
+        value={userValue}
+        onChange={onChange}
+        disabled={disabled}
+        name={name}
+      />
     </InputContainer>
   );
 };

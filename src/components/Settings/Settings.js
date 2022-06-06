@@ -7,21 +7,25 @@ import {
   Title,
   Container,
   SettingsContent,
-  InputWrapper,
 } from "components/Settings/Settings.style";
-import Input from "components/Settings/Input";
-import Profile from 'components/Settings/Profile';
-import Button from 'components/Settings/Button';
-import useAuthenticate from 'hooks/useAuthenticate';
+import Form from 'components/Settings/Form';
+import Profile from "components/Settings/Profile";
+import Button from "components/Settings/Button";
+import useAuthenticate from "hooks/useAuthenticate";
 
 const Settings = () => {
-  const data = localStorage.getItem('isAuthenticated');
+  const [loggedUserData, setLoggedUserData] = useState("");
+  const data = localStorage.getItem("isAuthenticated");
   const isAuthenticated = JSON.parse(data);
 
   useAuthenticate(isAuthenticated);
-
-  const [loggedUserData, setLoggedUserData] = useState("");
   const userData = isAuthenticated.id;
+
+  const handleSaveData = () => {
+    Axios.post("http://localhost:5000/api/set-data", {
+      userData: loggedUserData,
+    });
+  };
 
   useEffect(() => {
     Axios.post("http://localhost:5000/api/get-user", {
@@ -44,20 +48,8 @@ const Settings = () => {
         <SettingsContent>
           <h3>Avatar</h3>
           <Profile loggedUserData={loggedUserData} />
-          <InputWrapper>
-            <Input label="Full name" userValue={loggedUserData.username} />
-            <Input label="Job" userValue={loggedUserData.job} />
-          </InputWrapper>
-          <h4>Contact Informations</h4>
-          <InputWrapper>
-            <Input label="Phone Number" userValue={loggedUserData.phone} />
-            <Input label="Email address" userValue={loggedUserData.email} />
-          </InputWrapper>
-          <InputWrapper>
-            <Input label="Country" userValue={loggedUserData.country} />
-            <Input label="City" userValue={loggedUserData.city} />
-          </InputWrapper>
-          <Button secondary="secondary" value="Save" />
+          <Form loggedUserData={loggedUserData} setLoggedUserData={setLoggedUserData} />
+          <Button secondary="secondary" value="Save" onClick={handleSaveData} />
         </SettingsContent>
       </Container>
     </Wrapper>
