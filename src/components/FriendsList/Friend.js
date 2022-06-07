@@ -12,14 +12,12 @@ const Friend = ({ friend }) => {
   const navigate = useNavigate();
 
   const handleShowProfile = () => {
-    navigate(`/profile/${friend.friendid}`);
+    navigate(`/profile/${friend.id}`);
   };
 
   const handleDeleteFriend = () => {
-    console.log(friend.friendid);
-
     Axios.post('http://localhost:5000/api/delete-friend', {
-      userData: friend.friendid
+      userData: friend.id
     })
   };
 
