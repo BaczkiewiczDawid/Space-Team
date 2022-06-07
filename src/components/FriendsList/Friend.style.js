@@ -3,6 +3,7 @@ import Profile from "components/Dashboard/Profile";
 
 export const SingleFriend = styled.div`
   display: flex;
+  justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.white};
   margin-top: 1rem;
   padding: 0.5rem 1rem;
@@ -33,7 +34,25 @@ export const SingleFriend = styled.div`
 `;
 
 export const StyledProfile = styled(Profile)`
+  width: 70%;
+
   p {
     color: ${({ theme }) => theme.colors.black};
+  }
+`;
+
+export const IconsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  img {
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+
+    &:nth-child(n+1) {
+      margin-left: 2rem;
+    }
   }
 `;
