@@ -8,12 +8,25 @@ import {
 import editIcon from "assets/images/edit-icon.svg";
 import plusIcon from "assets/images/plus-icon.svg";
 import { useNavigate } from "react-router-dom";
+import Axios from 'axios';
 
 const Profile = ({ isAuthenticated, searchedUser }) => {
   const navigate = useNavigate();
 
   const handleEditProfile = () => {
     navigate('/settings', {replace: true})
+  }
+
+  const userData = {
+    userID: isAuthenticated.id,
+    username: searchedUser.username,
+    friendID: searchedUser.id
+  }
+
+  const handleAddFriend = () => {
+    Axios.post('http://localhost:5000/api/add-friend', {
+      userData: userData
+    })
   }
 
   return (
@@ -28,7 +41,7 @@ const Profile = ({ isAuthenticated, searchedUser }) => {
             <img src={editIcon} alt="edit profile" onClick={handleEditProfile} />
           ) : null}
         </Container>
-        <Button>
+        <Button onClick={handleAddFriend}>
           <img src={plusIcon} alt="plus icon" />
           <p>Add to friends...</p>
         </Button>
