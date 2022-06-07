@@ -5,6 +5,7 @@ import Logo from "components/Dashboard/Logo";
 import Axios from "axios";
 import styled from "styled-components";
 import Profile from "components/Dashboard/Profile";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -73,6 +74,8 @@ const FriendsList = () => {
   const data = localStorage.getItem("isAuthenticated");
   const isAuthenticated = JSON.parse(data);
 
+  const navigate = useNavigate();
+
   useAuthenticate(isAuthenticated);
 
   useEffect(() => {
@@ -82,8 +85,6 @@ const FriendsList = () => {
       setFriendsArray(response.data);
     });
   }, [isAuthenticated.id]);
-
-  console.log(friendsArray);
 
   return (
     <Wrapper>
@@ -96,7 +97,7 @@ const FriendsList = () => {
         <FriendsListContainer>
           {friendsArray.map((friend) => {
             return (
-              <SingleFriend>
+              <SingleFriend onClick={() => navigate(`/profile/${friend.friendid}`)}>
                 <StyledProfile
                   author={friend.username}
                   picture={friend.picture}
