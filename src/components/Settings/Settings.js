@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Navigation from "components/Navigation/Navigation";
 import Logo from "components/Dashboard/Logo";
 import Axios from "axios";
-import Button from 'components/Settings/Button';
 import {
   Wrapper,
   Title,
