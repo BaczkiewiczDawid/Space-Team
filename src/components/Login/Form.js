@@ -15,8 +15,8 @@ const validate = (values) => {
     errors.username = "Required";
   } else if (values.username.length < 5) {
     errors.username = "Must be 5 characters or more";
-  } else if (values.username.length > 15) {
-    errors.username = "Must be 15 characters or less";
+  } else if (values.username.length > 30) {
+    errors.username = "Must be 30 characters or less";
   }
 
   if (!values.password) {

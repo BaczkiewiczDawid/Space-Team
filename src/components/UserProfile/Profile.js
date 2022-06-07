@@ -19,7 +19,7 @@ const Profile = ({ isAuthenticated, searchedUser }) => {
   return (
     <StyledProfile>
       <Picture>
-        <img src={isAuthenticated.picture} alt="profile" />
+        <img src={searchedUser.picture} alt="profile" />
       </Picture>
       <Details>
         <Container>

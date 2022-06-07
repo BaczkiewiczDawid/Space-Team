@@ -64,11 +64,11 @@ const UserProfile = () => {
 
   useEffect(() => {
     Axios.post("http://localhost:5000/api/user-posts", {
-      userData: searchedUser.username,
+      userData: searchedUser.id,
     }).then((response) => {
       setPostsList(response.data);
     });
-  }, [searchedUser.username]);
+  }, [searchedUser.id]);
 
   return (
     <Wrapper>
@@ -87,7 +87,8 @@ const UserProfile = () => {
             return (
               <Post
                 key={post.id}
-                author={post.author}
+                author={post.username}
+                picture={post.picture}
                 description={post.description}
                 img={post.img}
               />
