@@ -70,8 +70,6 @@ const UserProfile = () => {
     });
   }, [searchedUser.id]);
 
-  console.log(searchedUser)
-
   return (
     <Wrapper>
       <Navigation

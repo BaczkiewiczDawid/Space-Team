@@ -7,17 +7,14 @@ import {
   Wrapper,
   Container,
   FriendsListContainer,
-  SingleFriend,
-  StyledProfile,
 } from "components/FriendsList/FriendsList.style";
 import { useNavigate } from "react-router-dom";
+import Friend from "components/FriendsList/Friend";
 
 const FriendsList = () => {
   const [friendsArray, setFriendsArray] = useState([]);
   const data = localStorage.getItem("isAuthenticated");
   const isAuthenticated = JSON.parse(data);
-
-  const navigate = useNavigate();
 
   useAuthenticate(isAuthenticated);
 
@@ -39,17 +36,7 @@ const FriendsList = () => {
         <Logo />
         <FriendsListContainer>
           {friendsArray.map((friend) => {
-            return (
-              <SingleFriend
-                onClick={() => navigate(`/profile/${friend.friendid}`)}
-              >
-                <StyledProfile
-                  author={friend.username}
-                  picture={friend.picture}
-                  dashboard={true}
-                />
-              </SingleFriend>
-            );
+            return <Friend friend={friend} />;
           })}
         </FriendsListContainer>
       </Container>
