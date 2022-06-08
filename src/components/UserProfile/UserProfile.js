@@ -1,37 +1,11 @@
 import { useState, useEffect } from "react";
 import Navigation from "components/Navigation/Navigation";
 import { useParams, useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import Axios from "axios";
 import Profile from "components/UserProfile/Profile";
 import Post from "components/Dashboard/Post";
 import useAuthenticate from "hooks/useAuthenticate";
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-  }
-`;
-
-const ProfileContent = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin-top: 3rem;
-  align-items: flex-start;
-  margin-left: 2rem;
-
-  h3 {
-    font-size: 2rem;
-    margin-top: 5rem;
-  }
-
-  @media screen and (min-width: 768px) {
-    margin-left: none;
-  }
-`;
+import { Wrapper, ProfileContent } from "components/UserProfile/UserProfile.style";
 
 const UserProfile = () => {
   const [searchedUser, setSearchedUser] = useState("");

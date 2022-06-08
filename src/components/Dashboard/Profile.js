@@ -6,7 +6,7 @@ const Profile = ({ dashboard, author, search, picture, className, onClick }) => 
       <Picture dashboard={dashboard}>
         <StyledProfilePicture src={picture} alt="profile" />
       </Picture>
-      <p>{author}</p>
+      {author && <p>{author}</p>}
     </StyledProfile>
   );
 };

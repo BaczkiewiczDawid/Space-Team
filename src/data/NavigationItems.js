@@ -15,7 +15,7 @@ const iconsList = [
     icon: chatIcon,
     alt: "chat",
     text: "Chat",
-    href: "/chats",
+    href: "/chat",
   },
   {
     icon: bellIcon,
