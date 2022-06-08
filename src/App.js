@@ -29,12 +29,12 @@ function App() {
           <Route
             exact
             path="/"
-            element={<Dashboard isAuthenticated={isAuthenticated} />}
+            element={<Dashboard />}
           />
-          <Route path={`/profile/:userId`} element={<UserProfile isAuthenticated={isAuthenticated} />} />
-          <Route path={'/settings'} element={<Settings isAuthenticated={isAuthenticated} />} />
-          <Route path={'/friends'} element={<FriendsList isAuthenticated={isAuthenticated} />} />
-          <Route path={'/chat'} element={<Chat isAuthenticated={isAuthenticated} />} />
+          <Route path={`/profile/:userId`} element={<UserProfile />} />
+          <Route path={'/settings'} element={<Settings />} />
+          <Route path={'/friends'} element={<FriendsList />} />
+          <Route path={'/chat'} element={<Chat />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

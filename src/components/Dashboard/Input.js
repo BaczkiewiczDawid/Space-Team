@@ -23,7 +23,7 @@ const StyledInput = styled.input`
     }
 `;
 
-const Input = ({ text, placeholder, onKeyDown, onChange, maxLength, primary, className }) => {
+const Input = ({ text, placeholder, onKeyDown, onChange, maxLength, primary, className, value }) => {
     return (
         <StyledInput
         type={text}
@@ -33,6 +33,7 @@ const Input = ({ text, placeholder, onKeyDown, onChange, maxLength, primary, cla
         maxLength={maxLength}
         primary={primary}
         className={className}
+        value={value}
       />
     )
 }
