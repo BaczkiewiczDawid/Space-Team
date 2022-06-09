@@ -5,15 +5,18 @@ import Axios from "axios";
 import Profile from "components/UserProfile/Profile";
 import Post from "components/Dashboard/Post";
 import useAuthenticate from "hooks/useAuthenticate";
-import { Wrapper, ProfileContent } from "components/UserProfile/UserProfile.style";
+import {
+  Wrapper,
+  ProfileContent,
+} from "components/UserProfile/UserProfile.style";
+import useLocalStorageAuthenticate from "hooks/useLocalStorageAuthenticate";
 
 const UserProfile = () => {
   const [searchedUser, setSearchedUser] = useState("");
   const [postsList, setPostsList] = useState([]);
   let { userId } = useParams();
 
-  const data = localStorage.getItem("isAuthenticated");
-  const isAuthenticated = JSON.parse(data);
+  const isAuthenticated = useLocalStorageAuthenticate();
 
   useAuthenticate(isAuthenticated);
 

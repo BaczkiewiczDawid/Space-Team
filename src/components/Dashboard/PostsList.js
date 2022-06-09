@@ -15,10 +15,10 @@ const PostsList = () => {
   return (
     <Wrapper>
       <PostsContainer>
-        {posts.map((el) => {
+        {posts.map((el, index) => {
           return (
             <Post
-              key={el.id}
+              key={index}
               author={el.username}
               description={el.description}
               img={el.img}
