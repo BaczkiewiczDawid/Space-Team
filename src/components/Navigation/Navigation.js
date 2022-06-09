@@ -62,7 +62,7 @@ const Navigation = ({ loggedUser, picture }) => {
                   icon={el.icon}
                   alt={el.alt}
                   text={el.text}
-                  active={el.href === location.pathname}
+                  active={(el.href === location.pathname) ? 1 : 0}
                 />
               );
             })}

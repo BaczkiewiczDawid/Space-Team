@@ -8,14 +8,14 @@ import {
   Container,
   SettingsContent,
 } from "components/Settings/Settings.style";
-import Form from 'components/Settings/Form';
+import Form from "components/Settings/Form";
 import Profile from "components/Settings/Profile";
 import useAuthenticate from "hooks/useAuthenticate";
+import useLocalStorageAuthenticate from "hooks/useLocalStorageAuthenticate";
 
 const Settings = () => {
   const [loggedUserData, setLoggedUserData] = useState("");
-  const data = localStorage.getItem("isAuthenticated");
-  const isAuthenticated = JSON.parse(data);
+  const isAuthenticated = useLocalStorageAuthenticate();
 
   useAuthenticate(isAuthenticated);
   const userData = isAuthenticated.id;
@@ -41,7 +41,10 @@ const Settings = () => {
         <SettingsContent>
           <h3>Avatar</h3>
           <Profile loggedUserData={loggedUserData} />
-          <Form loggedUserData={loggedUserData} setLoggedUserData={setLoggedUserData} />    
+          <Form
+            loggedUserData={loggedUserData}
+            setLoggedUserData={setLoggedUserData}
+          />
         </SettingsContent>
       </Container>
     </Wrapper>

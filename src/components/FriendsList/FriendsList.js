@@ -8,13 +8,12 @@ import {
   Container,
   FriendsListContainer,
 } from "components/FriendsList/FriendsList.style";
-import { useNavigate } from "react-router-dom";
 import Friend from "components/FriendsList/Friend";
+import useLocalStorageAuthenticate from "hooks/useLocalStorageAuthenticate";
 
 const FriendsList = () => {
   const [friendsArray, setFriendsArray] = useState([]);
-  const data = localStorage.getItem("isAuthenticated");
-  const isAuthenticated = JSON.parse(data);
+  const isAuthenticated = useLocalStorageAuthenticate();
 
   useAuthenticate(isAuthenticated);
 
