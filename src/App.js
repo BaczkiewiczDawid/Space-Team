@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { theme } from "assets/styles/theme";
+import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "assets/styles/GlobalStyle";
 import { lightTheme, darkTheme } from "assets/styles/theme";
@@ -10,22 +9,21 @@ import UserProfile from "components/UserProfile/UserProfile";
 import Settings from "components/Settings/Settings";
 import FriendsList from "components/FriendsList/FriendsList";
 import Chat from "components/Chat/Chat";
+import { useDarkMode } from "hooks/useDarkMode";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState("");
-  const [theme, setTheme] = useState('light');
+  const [theme, themeToggler] = useDarkMode();
+
+  const themeMode = theme === 'light' ? lightTheme : darkTheme
 
   if (isAuthenticated !== "") {
     localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
     const data = localStorage.getItem("isAuthenticated");
   }
 
-  const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
-  }
-
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={themeMode}>
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
@@ -37,7 +35,7 @@ function App() {
             path="/login"
             element={<Login setIsAuthenticated={setIsAuthenticated} />}
           />
-          <Route exact path="/" element={<Dashboard themeToggler={themeToggler} theme={theme} />} />
+          <Route exact path="/" element={<Dashboard theme={theme} toggleTheme={themeToggler} />} />
           <Route path={`/profile/:userId`} element={<UserProfile />} />
           <Route path={"/settings"} element={<Settings />} />
           <Route path={"/friends"} element={<FriendsList />} />

@@ -9,7 +9,7 @@ import Logo from "components/Dashboard/Logo";
 import useAuthenticate from "hooks/useAuthenticate";
 import useLocalStorageAuthenticate from "hooks/useLocalStorageAuthenticate";
 
-const Dashboard = ({ themeToggler, theme }) => {
+const Dashboard = ({ toggleTheme, theme }) => {
   const isAuthenticated = useLocalStorageAuthenticate();
 
   useAuthenticate(isAuthenticated);
@@ -22,7 +22,7 @@ const Dashboard = ({ themeToggler, theme }) => {
       />
       <Wrapper>
         <Logo theme={theme} />
-        <button onClick={themeToggler}>TOGGLE</button>
+        <button onClick={toggleTheme}>TOGGLE</button>
         <NewPost
           loggedUser={isAuthenticated.loggedUser}
           userID={isAuthenticated.id}
