@@ -14,7 +14,8 @@ export const ModalWrapper = styled.div`
 export const ModalContent = styled.div`
   width: 90vw;
   height: 20rem;
-  background-color: rgba(250, 250, 250);
+  /* background-color: rgba(250, 250, 250); */
+  background-color: ${({ theme }) => theme.background};
   margin: 0;
   margin-top: 5rem;
   margin-right: 1rem;
@@ -22,16 +23,16 @@ export const ModalContent = styled.div`
   padding: 1.2rem 2rem;
 
   h1 {
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.text};
   }
 
   p {
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.text};
     margin-top: 2rem;
   }
 
   img {
-    background-color: ${({ theme }) => theme.colors.purple};
+    background-color: ${({ theme }) => theme.purple};
     padding: 0.7rem;
     border-radius: 100px;
   }

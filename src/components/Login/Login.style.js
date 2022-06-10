@@ -51,12 +51,12 @@ export const Logo = styled.a`
 export const StyledLink = styled(Link)`
   margin-top: 1.3rem;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.text};
   font-size: 0.8rem;
   cursor: pointer;
 
   span {
-    color: ${({ theme }) => theme.colors.purple};
+    color: ${({ theme }) => theme.purple};
   }
 
   @media screen and (min-width: 768px) {
@@ -93,7 +93,7 @@ export const Navigation = styled.nav`
     border-radius: 100px;
     position: absolute;
     right: ${props => props.register ? '16%' : null};
-    background-color: ${({ theme }) => theme.colors.purple};
+    background-color: ${({ theme }) => theme.purple};
   }
 `;
 
@@ -106,7 +106,7 @@ export const LinkWrapper = styled.div`
 export const StyledNavLink = styled(Link)`
   text-decoration: none;
     font-weight: ${props => props.purple ? '700' : '300'};
-    color: ${props => props.purple ? props.theme.colors.purple : props.theme.colors.black};
+    color: ${props => props.purple ? props.theme.purple : props.theme.text};
 
     @media screen and (min-width: 1440px) {
       font-size: 1.4rem;

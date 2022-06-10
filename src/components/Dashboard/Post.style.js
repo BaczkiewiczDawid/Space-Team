@@ -5,6 +5,7 @@ export const PostWrapper = styled.article`
   width: 85vw;
   border-radius: 10px;
   padding: 1.6rem;
+  background-color: ${({ theme }) => theme.post};
   border: 1px solid rgba(42, 42, 42, 0.2);
   box-shadow: 8px 8px 26px -16px rgba(42, 42, 42, 1);
 
@@ -38,7 +39,7 @@ export const PostImage = styled.img`
 export const Description = styled.p`
   font-size: 1rem;
   line-height: 1.4rem;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.text};
   font-weight: 300;
   letter-spacing: 0.05rem;
 `;

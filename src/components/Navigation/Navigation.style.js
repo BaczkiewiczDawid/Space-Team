@@ -32,7 +32,7 @@ export const NavigationContent = styled.div`
   left: 0;
   width: 100vw;
   height: 101vh;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.navigation};
   z-index: 5;
 
   @media screen and (min-width: 768px) {
@@ -57,7 +57,7 @@ export const LinksContainer = styled.div`
 export const Underline = styled.div`
   width: 15rem;
   height: 1px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.white};
   margin-left: 1.2rem;
   margin-top: 1.3rem;
 `;

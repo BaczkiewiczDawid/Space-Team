@@ -7,6 +7,7 @@ const StyledProfile = styled.div`
   align-items: center;
   margin-top: 3rem;
   flex-wrap: wrap;
+  color: ${({ theme }) => theme.text};
 
   img {
     width: 6rem;

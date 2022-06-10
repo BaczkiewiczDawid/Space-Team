@@ -35,7 +35,7 @@ export const Container = styled.div`
 
   h1 {
     margin-top: 1rem;
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.background};
   }
 
   img {

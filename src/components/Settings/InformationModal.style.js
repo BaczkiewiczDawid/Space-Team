@@ -31,7 +31,7 @@ export const Container = styled.div`
   position: absolute;
   width: 90vw;
   height: 30vh;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.white};
   border-radius: 4px;
   border: 1px solid rgba(42, 42, 42, 0.2);
   box-shadow: 8px 8px 26px -16px rgba(42, 42, 42, 1);
@@ -40,7 +40,7 @@ export const Container = styled.div`
 
   h1 {
     margin: 0;
-    color: ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.green};
     margin: 1rem 0;
   }
 
@@ -49,7 +49,7 @@ export const Container = styled.div`
   }
 
   button {
-    border: 2px solid ${({ theme }) => theme.colors.green};
+    border: 2px solid ${({ theme }) => theme.green};
     background-color: transparent;
     width: 80%;
     padding: 0.5rem;
@@ -58,8 +58,8 @@ export const Container = styled.div`
     margin: 1rem 0;
 
     &:hover {
-      background-color: ${({ theme }) => theme.colors.green};
-      color: ${({ theme }) => theme.colors.white};
+      background-color: ${({ theme }) => theme.green};
+      color: ${({ theme }) => theme.white};
       transition: 0.2s;
     }
   }

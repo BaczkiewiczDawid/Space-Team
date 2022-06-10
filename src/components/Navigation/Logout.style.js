@@ -15,7 +15,7 @@ export const LogoutBtn = styled.button`
     }
 
     p {
-        color :${({ theme }) => theme.colors.error};
+        color :${({ theme }) => theme.error};
         margin-left: 1rem;
         font-size: 1.2rem;
     }

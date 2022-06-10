@@ -10,7 +10,7 @@ export const StyledProfile = styled.div`
 
   p {
     margin-left: ${props => props.dashboard ? '1.5rem' : '2rem'};
-    color: ${props => props.dashboard ? props.theme.colors.black : props.theme.colors.white};
+    color: ${props => props.dashboard ? props.theme.text : props.theme.navigationText};
     font-size: 1.1rem;
   }
 

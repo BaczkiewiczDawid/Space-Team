@@ -19,7 +19,7 @@ export const StyledLink = styled(Link)`
     font-size: 0.85rem;
     opacity: ${props => props.active ? '100%' : '60%'};
     font-weight: ${props => props.active ? '700' : '300'};
-    color: ${props => props.active ? props.theme.colors.purple : props.theme.colors.white};
+    color: ${props => props.active ? props.theme.purple : props.theme.navigationText};
   }
 
   @media screen and (min-width: 1080px) {

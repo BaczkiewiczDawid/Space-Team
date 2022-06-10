@@ -17,7 +17,7 @@ export const InputWrapper = styled.div`
   width: 95vw;
 
   img {
-    background-color: ${({ theme }) => theme.colors.purple};
+    background-color: ${({ theme }) => theme.purple};
     padding: 0.6rem;
     border-radius: 100px;
     margin-left: 2rem;
