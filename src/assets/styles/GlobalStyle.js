@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         font-family: 'Montserrat', sans-serif;
         overflow-x: hidden;
+        background-color: ${({ theme }) => theme.background};
     }
     a, button {
         font-family: 'Montserrat', sans-serif;

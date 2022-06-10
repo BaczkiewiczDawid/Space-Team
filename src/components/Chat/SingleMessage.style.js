@@ -8,9 +8,9 @@ export const SingleMessageWrapper = styled.div`
 
   div:nth-child(n + 2) {
     background-color: ${(props) =>
-      props.activeUser ? props.theme.colors.purple : "lightgrey"};
+      props.activeUser ? props.theme.purple : "lightgrey"};
     color: ${(props) =>
-      props.activeUser ? props.theme.colors.white : props.theme.colors.black};
+      props.activeUser ? props.theme.white : props.theme.black};
     margin-left: ${(props) => (props.activeUser ? "0" : "2rem")};
     margin-right: ${(props) => (props.activeUser ? "2rem" : "0")};
   }
@@ -20,8 +20,8 @@ export const MessageContainer = styled.div`
   width: auto;
   min-width: 55%;
   max-width: 70%;
-  background-color: ${({ theme }) => theme.colors.purple};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.purple};
+  color: ${({ theme }) => theme.text};
   padding: 0.2rem 1rem;
   border-radius: 4px;
 

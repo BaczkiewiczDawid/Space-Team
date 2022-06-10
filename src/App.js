@@ -2,39 +2,46 @@ import { useState } from "react";
 import { theme } from "assets/styles/theme";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "assets/styles/GlobalStyle";
+import { lightTheme, darkTheme } from "assets/styles/theme";
 import Login from "components/Login/Login";
 import Dashboard from "components/Dashboard/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import UserProfile from 'components/UserProfile/UserProfile';
-import Settings from 'components/Settings/Settings';
-import FriendsList from 'components/FriendsList/FriendsList';
-import Chat from 'components/Chat/Chat';
+import UserProfile from "components/UserProfile/UserProfile";
+import Settings from "components/Settings/Settings";
+import FriendsList from "components/FriendsList/FriendsList";
+import Chat from "components/Chat/Chat";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState("");
+  const [theme, setTheme] = useState('light');
 
-  if (isAuthenticated !== '') {
-    localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
-    const data = localStorage.getItem('isAuthenticated');
-    console.log(JSON.parse(data));
+  if (isAuthenticated !== "") {
+    localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
+    const data = localStorage.getItem("isAuthenticated");
+  }
+
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/register" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
           <Route
-            exact
-            path="/"
-            element={<Dashboard />}
+            path="/register"
+            element={<Login setIsAuthenticated={setIsAuthenticated} />}
           />
+          <Route
+            path="/login"
+            element={<Login setIsAuthenticated={setIsAuthenticated} />}
+          />
+          <Route exact path="/" element={<Dashboard themeToggler={themeToggler} theme={theme} />} />
           <Route path={`/profile/:userId`} element={<UserProfile />} />
-          <Route path={'/settings'} element={<Settings />} />
-          <Route path={'/friends'} element={<FriendsList />} />
-          <Route path={'/chat'} element={<Chat />} />
+          <Route path={"/settings"} element={<Settings />} />
+          <Route path={"/friends"} element={<FriendsList />} />
+          <Route path={"/chat"} element={<Chat />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

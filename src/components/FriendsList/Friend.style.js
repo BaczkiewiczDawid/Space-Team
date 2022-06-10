@@ -4,7 +4,7 @@ import Profile from "components/Dashboard/Profile";
 export const SingleFriend = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.background};
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   width: 95vw;
@@ -13,7 +13,7 @@ export const SingleFriend = styled.div`
   box-shadow: 8px 8px 26px -16px rgba(42, 42, 42, 1);
 
   &:hover {
-    background-color: #ebebeb;
+    background-color: ${({ theme }) => theme.friendHover};
     transition: 0.25s;
   }
 
@@ -37,7 +37,7 @@ export const StyledProfile = styled(Profile)`
   width: 70%;
 
   p {
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.text};
   }
 `;
 

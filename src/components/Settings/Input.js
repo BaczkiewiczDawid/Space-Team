@@ -7,16 +7,18 @@ export const InputContainer = styled.div`
 
   label {
     font-size: 1rem;
+    color: ${({ theme }) => theme.text}
   }
 
   input {
     background-color: transparent;
-    border: 1px solid rgba(42, 42, 42, 0.2);
+    border: 1px solid rgba(250, 250, 250, 0.2);
     padding: 0.8rem 2rem;
     border-radius: 5px;
     margin-top: 1.3rem;
     box-shadow: 8px 8px 26px -16px rgba(42, 42, 42, 1);
     width: 90vw;
+    color: ${({ theme }) => theme.text}
   }
 
   @media screen and (min-width: 768px) {

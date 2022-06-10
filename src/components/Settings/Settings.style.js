@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.background};
   margin-top: 2rem;
   font-size: 1.8rem;
 `;
@@ -24,11 +24,13 @@ export const SettingsContent = styled.section`
   h3 {
     font-weight: 300;
     margin-top: 4rem;
+    color: ${({ theme }) => theme.text}
   }
 
   h4 {
     margin-top: 4rem;
     font-size: 1.4rem;
+    color: ${({ theme }) => theme.text}
   }
 `;
 
@@ -49,6 +51,7 @@ export const InputContainer = styled.div`
     margin-top: 1.3rem;
     box-shadow: 8px 8px 26px -16px rgba(42, 42, 42, 1);
     width: 90vw;
+    color: ${({ theme }) => theme.text}
   }
 
   @media screen and (min-width: 768px) {

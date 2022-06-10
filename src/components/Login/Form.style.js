@@ -16,7 +16,7 @@ export const Input = styled.input`
   border-bottom: 1px solid ${props => props.err ? props.theme.colors.error : props.theme.colors.black};
   font-weight: 300;
   font-size: 1rem;
-  color: ${props => props.err ? props.theme.colors.error : props.theme.colors.black};
+  color: ${props => props.err ? props.theme.error : props.theme.black};
 
   &:nth-child(n + 2) {
     margin-top: 2rem;
@@ -45,8 +45,8 @@ export const Input = styled.input`
 export const StyledButton = styled.button`
   width: 75vw;
   padding: 0.5rem;
-  background-color: ${({ theme }) => theme.colors.purple};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.purple};
+  color: ${({ theme }) => theme.text};
   font-weight: 700;
   border: none;
   border-radius: 10px;
@@ -55,7 +55,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.darkPurple};
+    background-color: ${({ theme }) => theme.darkPurple};
     transition: 0.2s;
   }
 
