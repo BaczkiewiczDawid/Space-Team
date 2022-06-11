@@ -35,9 +35,9 @@ function App() {
             path="/login"
             element={<Login setIsAuthenticated={setIsAuthenticated} />}
           />
-          <Route exact path="/" element={<Dashboard theme={theme} toggleTheme={themeToggler} />} />
+          <Route exact path="/" element={<Dashboard theme={theme} />} />
           <Route path={`/profile/:userId`} element={<UserProfile />} />
-          <Route path={"/settings"} element={<Settings />} />
+          <Route path={"/settings"} element={<Settings theme={theme} toggleTheme={themeToggler} />} />
           <Route path={"/friends"} element={<FriendsList />} />
           <Route path={"/chat"} element={<Chat />} />
         </Routes>

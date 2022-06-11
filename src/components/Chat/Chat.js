@@ -13,6 +13,8 @@ const Chat = () => {
 
   useAuthenticate(isAuthenticated);
 
+  const theme = localStorage.getItem('theme');
+
   const messagesEndRef = useRef(null);
 
   const [inputValue, setInputValue] = useState("");
@@ -54,7 +56,7 @@ const Chat = () => {
         loggedUser={isAuthenticated.loggedUser}
       />
       <div>
-        <Logo />
+        <Logo theme={theme} />
         <MessageBox>
           <SingleMessage
             messagesList={messagesList}
