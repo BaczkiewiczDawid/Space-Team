@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
   margin-top: 2rem;
   font-size: 1.8rem;
 `;

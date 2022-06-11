@@ -12,8 +12,9 @@ import Form from "components/Settings/Form";
 import Profile from "components/Settings/Profile";
 import useAuthenticate from "hooks/useAuthenticate";
 import useLocalStorageAuthenticate from "hooks/useLocalStorageAuthenticate";
+import DarkModeSlider from 'components/Settings/DarkModeSlider';
 
-const Settings = () => {
+const Settings = ({ theme, toggleTheme }) => {
   const [loggedUserData, setLoggedUserData] = useState("");
   const isAuthenticated = useLocalStorageAuthenticate();
 
@@ -36,8 +37,9 @@ const Settings = () => {
         loggedUser={isAuthenticated.loggedUser}
       />
       <Container>
-        <Logo />
+        <Logo theme={theme} />
         <Title>Settings</Title>
+        <DarkModeSlider toggleTheme={toggleTheme} theme={theme} />
         <SettingsContent>
           <h3>Avatar</h3>
           <Profile loggedUserData={loggedUserData} />

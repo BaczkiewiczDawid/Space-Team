@@ -35,7 +35,7 @@ export const Container = styled.div`
 
   h1 {
     margin-top: 1rem;
-    color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
   }
 
   img {
@@ -48,7 +48,7 @@ export const Container = styled.div`
 export const Button = styled.button`
   display: flex;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.purple};
+  background-color: ${({ theme }) => theme.purple};
   border: none;
   padding: 0rem 3rem;
   cursor: pointer;
@@ -64,7 +64,7 @@ export const Button = styled.button`
 
   p {
     font-weight: 700;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.white};
     margin-left: 1rem;
     font-size: 0.75rem;
   }

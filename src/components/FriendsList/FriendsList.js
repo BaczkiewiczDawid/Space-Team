@@ -17,6 +17,8 @@ const FriendsList = () => {
 
   useAuthenticate(isAuthenticated);
 
+  const theme = localStorage.getItem('theme');
+
   useEffect(() => {
     Axios.post("http://localhost:5000/api/friends-list", {
       userData: isAuthenticated.id,
@@ -32,7 +34,7 @@ const FriendsList = () => {
         loggedUser={isAuthenticated.loggedUser}
       />
       <Container>
-        <Logo />
+        <Logo theme={theme} />
         <FriendsListContainer>
           {friendsArray.map((friend) => {
             return <Friend friend={friend} />;
