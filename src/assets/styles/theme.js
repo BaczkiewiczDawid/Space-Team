@@ -6,13 +6,14 @@ export const lightTheme = {
   purple: "#715bf5",
   post: "#fafafa",
   darkPurple: "#5e4ad9",
-  grey: "5a5a5a",
+  grey: "ccc",
   lightGrey: "9c9c9c",
   green: "#2dd636",
   error: "#ff4747",
   white: "#fafafa",
   black: "#2a2a2a",
   friendHover: "ebebeb",
+  blue: '#2196F3',
 };
 
 export const darkTheme = {
@@ -23,11 +24,12 @@ export const darkTheme = {
   purple: "#715bf5",
   post: "#202020",
   darkPurple: "#5e4ad9",
-  grey: "5a5a5a",
+  grey: "ccc",
   lightGrey: "9c9c9c",
   green: "#2dd636",
   error: "#ff4747",
   white: "#fafafa",
   black: "#2a2a2a",
   friendHover: "#1a1919",
+  blue: '#2196F3',
 };
