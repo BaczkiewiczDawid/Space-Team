@@ -36,6 +36,8 @@ const UserProfile = () => {
     });
   }, [searchedUser.id]);
 
+
+
   return (
     <Wrapper>
       <Navigation
