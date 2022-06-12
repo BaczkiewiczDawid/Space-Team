@@ -4,6 +4,7 @@ import { InputWrapper, SelectWrapper } from "components/Settings/Form.style";
 import Button from "components/Settings/Button";
 import Axios from "axios";
 import InformationModal from "components/Settings/InformationModal";
+import { useEffect } from "react";
 
 const Form = ({ loggedUserData, setLoggedUserData }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,9 +30,12 @@ const Form = ({ loggedUserData, setLoggedUserData }) => {
     setIsOpen(!isOpen);
   };
 
-  fetch("https://restcountries.com/v3.1/all")
-    .then((response) => response.json())
-    .then((data) => setCountryList(data));
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((response) => response.json())
+      .then((data) => setCountryList(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <>
@@ -74,23 +78,17 @@ const Form = ({ loggedUserData, setLoggedUserData }) => {
           />
         </InputWrapper>
         <InputWrapper>
-          {/* <Input
-            label="Country"
-            name="country"
-            userValue={loggedUserData.country}
-            onChange={handleInputValue}
-          /> */}
           <SelectWrapper>
             <label htmlFor="">Country</label>
-            <select name="country" id="" onChange={handleInputValue}>
+            <select
+              name="country"
+              value={loggedUserData.country}
+              onChange={handleInputValue}
+            >
               {countryList.map((country) => (
                 <option
                   name="country"
-                  selected={
-                    loggedUserData.country === country.name.common
-                      ? true
-                      : false
-                  }
+                  key={country.name.common}
                   value={country.name.common}
                 >
                   {country.name.common}

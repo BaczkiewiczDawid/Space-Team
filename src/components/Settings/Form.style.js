@@ -34,7 +34,7 @@ export const SelectWrapper = styled.div`
 
   @media screen and (min-width: 1440px) {
     select {
-      width: 20vw;
+      width: 19vw;
     }
   }
 `;
