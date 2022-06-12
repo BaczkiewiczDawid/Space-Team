@@ -12,6 +12,8 @@ const SearchBar = ({ picture }) => {
   const [userData, setUserData] = useState("");
   const [usersList, setUsersList] = useState([]);
 
+  const wrapperRef = useRef();
+
   const useOutsideAlerter = (ref) => {
     useEffect(() => {
       function handleClickOutside(event) {
@@ -40,7 +42,6 @@ const SearchBar = ({ picture }) => {
     }
   }, [userData, isOpen]);
 
-  const wrapperRef = useRef();
   useOutsideAlerter(wrapperRef);
 
   const handleOpenSearchBar = (e) => {
