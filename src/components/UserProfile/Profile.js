@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   StyledProfile,
   Picture,
@@ -8,26 +9,41 @@ import {
 import editIcon from "assets/images/edit-icon.svg";
 import plusIcon from "assets/images/plus-icon.svg";
 import { useNavigate } from "react-router-dom";
-import Axios from 'axios';
+import Axios from "axios";
 
 const Profile = ({ isAuthenticated, searchedUser }) => {
+  const [isFriend, setIsFriend] = useState(false);
+  const [friendsList, setFriendsList] = useState([]);
   const navigate = useNavigate();
 
   const handleEditProfile = () => {
-    navigate('/settings', {replace: true})
-  }
+    navigate("/settings", { replace: true });
+  };
 
   const userData = {
     userID: isAuthenticated.id,
     username: searchedUser.username,
-    friendID: searchedUser.id
-  }
+    friendID: searchedUser.id,
+  };
 
   const handleAddFriend = () => {
-    Axios.post('http://localhost:5000/api/add-friend', {
-      userData: userData
-    })
-  }
+    if (!isFriend) {
+      Axios.post("http://localhost:5000/api/add-friend", {
+        userData: userData,
+      });
+    }
+  };
+
+  useEffect(() => {
+    Axios.post("http://localhost:5000/api/friends-list", {
+      userData: isAuthenticated.id,
+    }).then((response) => {
+      setFriendsList(response.data);
+      setIsFriend(
+        friendsList.find((el) => el.id === searchedUser.id) !== undefined
+      );
+    });
+  }, [isAuthenticated.id, searchedUser.id]);
 
   return (
     <StyledProfile>
@@ -38,13 +54,19 @@ const Profile = ({ isAuthenticated, searchedUser }) => {
         <Container>
           <h1>{searchedUser.username}</h1>
           {isAuthenticated.loggedUser === searchedUser.username ? (
-            <img src={editIcon} alt="edit profile" onClick={handleEditProfile} />
+            <img
+              src={editIcon}
+              alt="edit profile"
+              onClick={handleEditProfile}
+            />
           ) : null}
         </Container>
-        <Button onClick={handleAddFriend}>
-          <img src={plusIcon} alt="plus icon" />
-          <p>Add to friends...</p>
-        </Button>
+        {!isFriend && (
+          <Button onClick={handleAddFriend}>
+            <img src={plusIcon} alt="plus icon" />
+            <p>Add to friends...</p>
+          </Button>
+        )}
       </Details>
     </StyledProfile>
   );
