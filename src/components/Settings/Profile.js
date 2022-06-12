@@ -1,44 +1,48 @@
-import styled from "styled-components";
-import Button from 'components/Settings/Button';
-
-const StyledProfile = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 3rem;
-  flex-wrap: wrap;
-  color: ${({ theme }) => theme.text};
-
-  img {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 100px;
-  }
-
-  div {
-    flex-direction: column;
-    margin-left: 2rem;
-
-    p:nth-child(n + 1) {
-      font-weight: 700;
-    }
-
-    p:nth-child(n + 2) {
-      font-weight: 300;
-    }
-  }
-`;
-
-const ProfileWrapper = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    align-items: center;
-  }
-`;
+import { useState } from "react";
+import Button from "components/Settings/Button";
+import {
+  ProfileWrapper,
+  StyledProfile,
+} from "components/Settings/Profile.style";
+import Modal from "components/Dashboard/Modal";
+import Axios from "axios";
 
 const Profile = ({ loggedUserData }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [imageURL, setImageURL] = useState("");
+
+  const handleOpenModal = () => {
+    setIsOpen(true);
+  };
+
+  const handleImageURL = (e) => {
+    setImageURL(e.target.value);
+  };
+
+  const handleChangeProfilePicture = () => {
+    if (imageURL !== "") {
+      Axios.post("http://localhost:5000/api/change-picture", {
+        userData: {
+          picture: imageURL,
+          user: loggedUserData.id,
+        },
+      });
+
+      setIsOpen(false);
+    }
+  };
+
   return (
     <ProfileWrapper>
+      {isOpen ? (
+        <Modal
+          setIsOpen={setIsOpen}
+          profile={true}
+          onChange={handleImageURL}
+          onClick={handleChangeProfilePicture}
+          title="Change Your profile picture"
+        />
+      ) : null}
       <StyledProfile>
         <img src={loggedUserData.picture} alt="" />
         <div>
@@ -46,7 +50,7 @@ const Profile = ({ loggedUserData }) => {
           <p>{loggedUserData.email}</p>
         </div>
       </StyledProfile>
-      <Button value="Upload now" />
+      <Button onClick={handleOpenModal} value="Upload now" />
     </ProfileWrapper>
   );
 };

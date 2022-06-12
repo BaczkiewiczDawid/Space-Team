@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ModalWrapper = styled.div`
-  display: ${(props) => (props.isModalOpen ? "flex" : "none")};
+  display: flex;
   justify-content: center;
   width: 100vw;
   height: 100vh;

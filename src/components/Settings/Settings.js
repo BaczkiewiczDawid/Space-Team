@@ -27,7 +27,6 @@ const Settings = ({ theme, toggleTheme }) => {
     }).then((response) => {
       setLoggedUserData(response.data[0]);
     });
-    console.log(loggedUserData);
   }, [userData]);
 
   return (

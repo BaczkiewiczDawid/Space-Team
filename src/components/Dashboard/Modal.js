@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useEffect } from "react";
 import {
   ModalWrapper,
   ModalContent,
@@ -6,55 +6,41 @@ import {
 } from "components/Dashboard/Modal.style";
 import arrowIcon from "assets/images/arrow-icon.svg";
 import Input from "components/Dashboard/Input";
-import Axios from "axios";
 
-const Modal = ({
-  isModalOpen,
-  setIsModalOpen,
-  postDescription,
-  userID,
-}) => {
-  const [imageURL, setImageURL] = useState("");
+const Modal = ({ postDescription, title, onClick, onChange, setIsOpen }) => {
+  const modalRef = useRef(null);
 
-  const handleImageValue = (e) => {
-    setImageURL(e.target.value);
-  };
-
-  const handlePublicPost = (e) => {
-    if (imageURL !== "") {
-      setIsModalOpen(false);
-
-      const newPost = {
-        author: userID,
-        description: postDescription,
-        img: imageURL,
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setIsOpen(false)
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
       };
+    }, [ref]);
+  }
 
-      Axios.post("http://localhost:5000/api/new-post", {
-        newPost: newPost,
-      }).then(() => {
-        console.log("new post added");
-      });
-    } else {
-      alert("Cant be empty");
-    }
-  };
+  useOutsideAlerter(modalRef);
 
   return (
-    <ModalWrapper isModalOpen={isModalOpen}>
-      <ModalContent>
-        <h1>Almost done</h1>
+    <ModalWrapper>
+      <ModalContent ref={modalRef}>
+        <h1>{title}</h1>
         <p>{postDescription}</p>
         <InputWrapper>
           <Input
             type="text"
             placeholder="Paste image url..."
-            onChange={handleImageValue}
+            onChange={onChange}
           />
           <img
             src={arrowIcon}
             alt="arrow-right add new post"
-            onClick={handlePublicPost}
+            onClick={onClick}
           />
         </InputWrapper>
       </ModalContent>
