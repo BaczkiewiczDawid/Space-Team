@@ -38,6 +38,19 @@ export const AccountsList = styled.div`
   border: 1px solid rgba(42, 42, 42, 0.2);
   box-shadow: 8px 8px 26px -16px rgba(42, 42, 42, 1);
 
+  div {
+    margin-top: .5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: ${({ theme }) => theme.black};
+  }
+
+  &:nth-child(n + 1) {
+    margin-top: 1rem;
+  }
+
   @media screen and (min-width: 768px) {
     width: 30vw;
   }
@@ -48,18 +61,6 @@ export const AccountsList = styled.div`
 
   @media screen and (min-width: 1440px) {
     width: 20vw;
-  }
-
-  div {
-    margin-top: .5rem;
-  }
-
-  p {
-    font-size: 0.9rem;
-  }
-
-  &:nth-child(n + 1) {
-    margin-top: 1rem;
   }
 `;
 
