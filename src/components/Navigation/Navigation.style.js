@@ -55,7 +55,7 @@ export const LinksContainer = styled.div`
 `;
 
 export const Underline = styled.div`
-  width: 15rem;
+  width: 80%;
   height: 1px;
   background-color: ${({ theme }) => theme.white};
   margin-left: 1.2rem;

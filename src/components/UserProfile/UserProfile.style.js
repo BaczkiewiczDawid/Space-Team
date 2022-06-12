@@ -19,6 +19,7 @@ export const ProfileContent = styled.section`
   h3 {
     font-size: 2rem;
     margin-top: 5rem;
+    color: ${({ theme }) => theme.text};
   }
 
   @media screen and (min-width: 768px) {

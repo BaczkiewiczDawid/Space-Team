@@ -15,6 +15,10 @@ export const SelectWrapper = styled.div`
   flex-direction: column;
   margin-top: 2rem;
 
+  label {
+    color: ${({ theme }) => theme.text};
+  }
+
   select {
     background-color: transparent;
     border: 1px solid rgba(250, 250, 250, 0.2);
