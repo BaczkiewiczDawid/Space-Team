@@ -20,17 +20,6 @@ const UserProfile = () => {
 
   useAuthenticate(isAuthenticated);
 
-  let navigate = useNavigate();
-
-  useEffect(() => {
-    if (
-      isAuthenticated.authenticated === false ||
-      isAuthenticated.loggedUser === undefined
-    ) {
-      navigate("/login", { replace: true });
-    }
-  }, [isAuthenticated, navigate]);
-
   useEffect(() => {
     Axios.post("http://localhost:5000/api/get-user", {
       userData: userId,

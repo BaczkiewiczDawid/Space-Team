@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import {
   ModalWrapper,
   ModalContent,
@@ -6,16 +7,28 @@ import {
 import arrowIcon from "assets/images/arrow-icon.svg";
 import Input from "components/Dashboard/Input";
 
-const Modal = ({
-  isModalOpen,
-  postDescription,
-  title,
-  onClick,
-  onChange,
-}) => {
+const Modal = ({ postDescription, title, onClick, onChange, setIsOpen }) => {
+  const modalRef = useRef(null);
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setIsOpen(false)
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  useOutsideAlerter(modalRef);
+
   return (
-    <ModalWrapper isModalOpen={isModalOpen}>
-      <ModalContent>
+    <ModalWrapper>
+      <ModalContent ref={modalRef}>
         <h1>{title}</h1>
         <p>{postDescription}</p>
         <InputWrapper>

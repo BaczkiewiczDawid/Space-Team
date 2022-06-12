@@ -24,7 +24,7 @@ const Profile = ({ loggedUserData }) => {
       Axios.post("http://localhost:5000/api/change-picture", {
         userData: {
           picture: imageURL,
-          user: loggedUserData.id
+          user: loggedUserData.id,
         },
       });
 
@@ -36,7 +36,7 @@ const Profile = ({ loggedUserData }) => {
     <ProfileWrapper>
       {isOpen ? (
         <Modal
-          isModalOpen={isOpen}
+          setIsOpen={setIsOpen}
           profile={true}
           onChange={handleImageURL}
           onClick={handleChangeProfilePicture}

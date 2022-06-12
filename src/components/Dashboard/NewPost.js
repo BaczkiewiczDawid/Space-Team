@@ -5,7 +5,7 @@ import Axios from "axios";
 
 const NewPost = ({ loggedUser, userID }) => {
   const [postDescription, setPostDescription] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [imageURL, setImageURL] = useState("");
 
   const handleImageValue = (e) => {
@@ -20,13 +20,13 @@ const NewPost = ({ loggedUser, userID }) => {
     if (e.key === "Enter" && e.target.value !== "") {
       e.target.value = "";
 
-      setIsModalOpen(true);
+      setIsOpen(true);
     }
   };
 
   const handlePublicPost = (e) => {
     if (imageURL !== "") {
-      setIsModalOpen(false);
+      setIsOpen(false);
 
       const newPost = {
         author: userID,
@@ -54,15 +54,17 @@ const NewPost = ({ loggedUser, userID }) => {
         maxLength="200"
         primary
       />
-      <Modal
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-        postDescription={postDescription}
-        userID={userID}
-        onChange={handleImageValue}
-        onClick={handlePublicPost}
-        title="Almost done"
-      />
+      {isOpen ? (
+        <Modal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          postDescription={postDescription}
+          userID={userID}
+          onChange={handleImageValue}
+          onClick={handlePublicPost}
+          title="Almost done"
+        />
+      ) : null}
     </>
   );
 };
