@@ -10,6 +10,7 @@ import Settings from "components/Settings/Settings";
 import FriendsList from "components/FriendsList/FriendsList";
 import Chat from "components/Chat/Chat";
 import { useDarkMode } from "hooks/useDarkMode";
+import NotFound from 'components/NotFound/NotFound';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState("");
@@ -40,6 +41,7 @@ function App() {
           <Route path={"/settings"} element={<Settings theme={theme} toggleTheme={themeToggler} />} />
           <Route path={"/friends"} element={<FriendsList />} />
           <Route path={"/chat"} element={<Chat />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
