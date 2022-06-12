@@ -13,7 +13,7 @@ export const StyledForm = styled.form`
 export const Input = styled.input`
   width: 75vw;
   border: none;
-  border-bottom: 1px solid ${props => props.err ? props.theme.colors.error : props.theme.colors.black};
+  border-bottom: 1px solid ${props => props.err ? props.theme.error : props.theme.black};
   font-weight: 300;
   font-size: 1rem;
   color: ${props => props.err ? props.theme.error : props.theme.black};
@@ -46,7 +46,7 @@ export const StyledButton = styled.button`
   width: 75vw;
   padding: 0.5rem;
   background-color: ${({ theme }) => theme.purple};
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.white};
   font-weight: 700;
   border: none;
   border-radius: 10px;
@@ -74,7 +74,7 @@ export const StyledButton = styled.button`
 `;
 
 export const ErrorMessage = styled.span`
-  color: ${({ theme }) => theme.colors.error};
+  color: ${({ theme }) => theme.error};
   margin-left: 1rem;
   margin-top: 0.5rem;
 `;
