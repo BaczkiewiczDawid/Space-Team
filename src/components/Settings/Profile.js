@@ -6,10 +6,13 @@ import {
 } from "components/Settings/Profile.style";
 import Modal from "components/Dashboard/Modal";
 import Axios from "axios";
+import InformationModal from 'components/InformationModal/InformationModal';
 
 const Profile = ({ loggedUserData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [imageURL, setImageURL] = useState("");
+  const [isInformationModalOpen, setIsInformationModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
 
   const handleOpenModal = () => {
     setIsOpen(true);
@@ -26,14 +29,29 @@ const Profile = ({ loggedUserData }) => {
           picture: imageURL,
           user: loggedUserData.id,
         },
-      });
+      }).then((response) => {
+        setIsSuccess(true)
 
+      }).catch((err) => {
+        setIsSuccess(false);
+      })
+
+      setIsInformationModalOpen(true);
       setIsOpen(false);
+
+      setTimeout(() => {
+          setIsInformationModalOpen(false);
+      }, 2500);
     }
   };
 
+  const handleCloseInformationModal = () => {
+    setIsInformationModalOpen(false);
+  }
+
   return (
     <ProfileWrapper>
+      <InformationModal isOpen={isInformationModalOpen} onClick={handleCloseInformationModal} success={isSuccess} message={isSuccess === true ? 'Picture changed successfully' : 'Something went wrong'} />
       {isOpen ? (
         <Modal
           setIsOpen={setIsOpen}
