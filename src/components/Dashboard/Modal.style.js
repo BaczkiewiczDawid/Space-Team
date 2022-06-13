@@ -1,4 +1,13 @@
 import styled from "styled-components";
+import Input from 'components/Dashboard/Input';
+
+export const StyledInput = styled(Input)`
+  width: 45vw;
+
+  @media screen and (min-width: 500px) {
+    width: 55vw;
+  }
+`;
 
 export const ModalWrapper = styled.div`
   display: flex;
@@ -9,12 +18,12 @@ export const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 999;
 `;
 
 export const ModalContent = styled.div`
   width: 90vw;
   height: 20rem;
-  /* background-color: rgba(250, 250, 250); */
   background-color: ${({ theme }) => theme.background};
   margin: 0;
   margin-top: 5rem;
@@ -39,6 +48,7 @@ export const ModalContent = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 50vw;
+    margin-left: 16rem;
   }
 
   @media screen and (min-width: 1080px) {

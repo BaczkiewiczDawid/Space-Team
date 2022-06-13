@@ -3,9 +3,9 @@ import {
   ModalWrapper,
   ModalContent,
   InputWrapper,
+  StyledInput,
 } from "components/Dashboard/Modal.style";
 import arrowIcon from "assets/images/arrow-icon.svg";
-import Input from "components/Dashboard/Input";
 
 const Modal = ({ postDescription, title, onClick, onChange, setIsOpen }) => {
   const modalRef = useRef(null);
@@ -14,7 +14,7 @@ const Modal = ({ postDescription, title, onClick, onChange, setIsOpen }) => {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          setIsOpen(false)
+          setIsOpen(false);
         }
       }
       document.addEventListener("mousedown", handleClickOutside);
@@ -32,7 +32,7 @@ const Modal = ({ postDescription, title, onClick, onChange, setIsOpen }) => {
         <h1>{title}</h1>
         <p>{postDescription}</p>
         <InputWrapper>
-          <Input
+          <StyledInput
             type="text"
             placeholder="Paste image url..."
             onChange={onChange}
