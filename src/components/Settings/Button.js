@@ -13,6 +13,12 @@ const StyledButton = styled.button`
   @media screen and (min-width: 768px) {
     margin-left: ${(props) => (props.secondary ? "0" : "3rem")};
   }
+
+  &:hover {
+    /* background-color: ${({ theme }) => theme.darkPurple};*/
+    transition: .5s; 
+    box-shadow: inset 12rem 0 0 0 ${({ theme }) => theme.darkPurple};
+  }
 `;
 
 const Button = ({ value, secondary, onClick, type }) => {
