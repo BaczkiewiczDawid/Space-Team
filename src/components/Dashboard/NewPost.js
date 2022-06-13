@@ -2,11 +2,15 @@ import { useState } from "react";
 import Modal from "components/Dashboard/Modal";
 import Input from "components/Dashboard/Input";
 import Axios from "axios";
+import InformationModal from 'components/InformationModal/InformationModal';
+
 
 const NewPost = ({ loggedUser, userID }) => {
   const [postDescription, setPostDescription] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [imageURL, setImageURL] = useState("");
+  const [isInformationModalOpen, setIsInformationModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleImageValue = (e) => {
     setImageURL(e.target.value);
@@ -37,12 +41,24 @@ const NewPost = ({ loggedUser, userID }) => {
       Axios.post("http://localhost:5000/api/new-post", {
         newPost: newPost,
       }).then(() => {
-        console.log("new post added");
-      });
+        setIsSuccess(true)
+
+        setTimeout(() => {
+          setIsInformationModalOpen(false);
+        }, 2500);
+      })
+      .catch((err) => {
+        setIsSuccess(false);
+      })
     } else {
       alert("Cant be empty");
     }
+    setIsInformationModalOpen(true);
   };
+
+  const handleCloseInformationModal = () => {
+    setIsInformationModalOpen(false);
+  }
 
   return (
     <>
@@ -65,6 +81,7 @@ const NewPost = ({ loggedUser, userID }) => {
           title="Almost done"
         />
       ) : null}
+      <InformationModal onClick={handleCloseInformationModal} isOpen={isInformationModalOpen} message={isSuccess ? "Post added successfully" : 'Something went wrong'} success={isSuccess} />
     </>
   );
 };

@@ -8,6 +8,7 @@ import {
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
+import InformationModal from "components/InformationModal/InformationModal";
 
 const validate = (values) => {
   const errors = {};
@@ -35,6 +36,8 @@ const validate = (values) => {
 };
 
 const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
+  const [isInformationModalOpen, setIsInformationModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
   let navigate = useNavigate();
 
   const formik = useFormik({
@@ -52,8 +55,6 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // navigate("/", { replace: true });
-
     const userData = {
       username: formik.values.username,
       email: formik.values.email,
@@ -63,28 +64,43 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
     if (location.pathname === "/register") {
       Axios.post("http://localhost:5000/api/register", {
         userData: userData,
-      }).then(() => {
-        console.log("account created");
-      });
+      })
+        .then(() => {
+          setIsSuccess(true);
+        })
+        .catch((err) => {
+          setIsSuccess(false);
+        });
+
+      setIsInformationModalOpen(true);
+
+      setTimeout(() => {
+        setIsInformationModalOpen(false)
+      }, 2500);
 
       navigate("/login", { replace: true });
     } else {
       Axios.post("http://localhost:5000/api/login", {
         userData: userData,
-      }).then((response) => {
-        if (response.data[0]) {
-          setIsAuthenticated({
-            authenticated: true,
-            loggedUser: response.data[0].username,
-            id: response.data[0].id,
-            picture: response.data[0].picture
-          });
-          
-          navigate("/", { replace: true });
-        }
-      });
+      })
+        .then((response) => {
+          if (response.data[0]) {
+            setIsAuthenticated({
+              authenticated: true,
+              loggedUser: response.data[0].username,
+              id: response.data[0].id,
+              picture: response.data[0].picture,
+            });
+            navigate("/", { replace: true });
+          }
+        })
+
     }
   };
+
+  const handleCloseInformationModal = () => {
+    setIsInformationModalOpen(false)
+  }
 
   return (
     <StyledForm onSubmit={formik.handleSubmit && handleSubmit}>
@@ -95,6 +111,7 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.email}
+        autoComplete="email"
         placeholder="Enter Your email"
         err={
           formik.errors.email &&
@@ -132,6 +149,7 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
         type="password"
         id="password"
         name="password"
+        autoComplete="current-password"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.password}
@@ -151,6 +169,16 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
       <StyledButton type="submit">
         {location.pathname === "/register" ? "SIGN UP" : "LOG IN"}
       </StyledButton>
+      <InformationModal
+        isOpen={isInformationModalOpen}
+        message={
+          isSuccess === true
+            ? "Account created successfully!"
+            : "Something went wrong"
+        }
+        success={isSuccess}
+        onClick={handleCloseInformationModal}
+      />
     </StyledForm>
   );
 };
