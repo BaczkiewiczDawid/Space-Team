@@ -26,7 +26,7 @@ const Dashboard = ({ theme }) => {
           loggedUser={isAuthenticated.loggedUser}
           userID={isAuthenticated.id}
         />
-        <PostsList />
+        <PostsList userID={isAuthenticated.id} />
       </Wrapper>
     </DashboardWrapper>
   );
