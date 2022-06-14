@@ -3,7 +3,7 @@ import { Wrapper, PostsContainer } from "components/Dashboard/PostsList.style";
 import Post from "components/Dashboard/Post";
 import Axios from "axios";
 
-const PostsList = () => {
+const PostsList = ({ userID }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -19,10 +19,12 @@ const PostsList = () => {
           return (
             <Post
               key={index}
+              postID={el.postID}
               author={el.username}
               description={el.description}
               img={el.img}
               picture={el.picture}
+              userID={userID}
             />
           );
         })}
