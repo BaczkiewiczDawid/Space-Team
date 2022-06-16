@@ -24,7 +24,7 @@ const Profile = ({ loggedUserData }) => {
 
   const handleChangeProfilePicture = () => {
     if (imageURL !== "") {
-      Axios.post("http://localhost:5000/api/change-picture", {
+      Axios.post("https://lit-garden-32225.herokuapp.com/api/change-picture", {
         userData: {
           picture: imageURL,
           user: loggedUserData.id,

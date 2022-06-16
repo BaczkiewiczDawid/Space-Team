@@ -28,14 +28,14 @@ const Profile = ({ isAuthenticated, searchedUser }) => {
 
   const handleAddFriend = () => {
     if (!isFriend) {
-      Axios.post("http://localhost:5000/api/add-friend", {
+      Axios.post("https://lit-garden-32225.herokuapp.com/api/add-friend", {
         userData: userData,
       });
     }
   };
 
   useEffect(() => {
-    Axios.post("http://localhost:5000/api/friends-list", {
+    Axios.post("https://lit-garden-32225.herokuapp.com/api/friends-list", {
       userData: isAuthenticated.id,
     }).then((response) => {
       setFriendsList(response.data);

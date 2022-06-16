@@ -5,7 +5,7 @@ import Axios from "axios";
 const SendMessage = ({ inputValue, setInputValue, userData }) => {
   const handleSendMessage = () => {
     if (inputValue !== "") {
-      Axios.post("http://localhost:5000/api/new-message", {
+      Axios.post("https://lit-garden-32225.herokuapp.com/api/new-message", {
         userData: userData,
       });
     }

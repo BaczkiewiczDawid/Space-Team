@@ -18,12 +18,6 @@ const iconsList = [
     href: "/chat",
   },
   {
-    icon: bellIcon,
-    alt: "notifications",
-    text: "Notifications",
-    href: "/notifications",
-  },
-  {
     icon: settingsIcon,
     alt: "settings",
     text: "Settings",

@@ -38,7 +38,7 @@ const NewPost = ({ loggedUser, userID }) => {
         img: imageURL,
       };
 
-      Axios.post("http://localhost:5000/api/new-post", {
+      Axios.post("https://lit-garden-32225.herokuapp.com/api/new-post", {
         newPost: newPost,
       }).then(() => {
         setIsSuccess(true)
