@@ -14,6 +14,7 @@ import useLocalStorageAuthenticate from "hooks/useLocalStorageAuthenticate";
 const UserProfile = () => {
   const [searchedUser, setSearchedUser] = useState("");
   const [postsList, setPostsList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   let { userId } = useParams();
 
   const isAuthenticated = useLocalStorageAuthenticate();
@@ -21,22 +22,21 @@ const UserProfile = () => {
   useAuthenticate(isAuthenticated);
 
   useEffect(() => {
-    Axios.post("http://localhost:5000/api/get-user", {
+    Axios.post("https://lit-garden-32225.herokuapp.com/api/get-user", {
       userData: userId,
     }).then((response) => {
       setSearchedUser(response.data[0]);
+      setIsLoading(false);
     });
   }, [userId]);
 
   useEffect(() => {
-    Axios.post("http://localhost:5000/api/user-posts", {
+    Axios.post("https://lit-garden-32225.herokuapp.com/api/user-posts", {
       userData: searchedUser.id,
     }).then((response) => {
       setPostsList(response.data);
     });
   }, [searchedUser.id]);
-
-
 
   return (
     <Wrapper>
@@ -49,6 +49,7 @@ const UserProfile = () => {
           isAuthenticated={isAuthenticated}
           searchedUser={searchedUser}
         />
+        {isLoading && <p>Loading ...</p>}
         <h3>Recent posts</h3>
         {postsList &&
           postsList.map((post) => {

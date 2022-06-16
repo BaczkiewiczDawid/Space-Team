@@ -62,7 +62,7 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
     };
 
     if (location.pathname === "/register") {
-      Axios.post("http://localhost:5000/api/register", {
+      Axios.post("https://lit-garden-32225.herokuapp.com/api/register", {
         userData: userData,
       })
         .then(() => {
@@ -80,7 +80,7 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
 
       navigate("/login", { replace: true });
     } else {
-      Axios.post("http://localhost:5000/api/login", {
+      Axios.post("https://lit-garden-32225.herokuapp.com/api/login", {
         userData: userData,
       })
         .then((response) => {

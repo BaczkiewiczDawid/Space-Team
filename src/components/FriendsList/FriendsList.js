@@ -13,6 +13,7 @@ import useLocalStorageAuthenticate from "hooks/useLocalStorageAuthenticate";
 
 const FriendsList = () => {
   const [friendsArray, setFriendsArray] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
   const isAuthenticated = useLocalStorageAuthenticate();
 
   useAuthenticate(isAuthenticated);
@@ -20,10 +21,11 @@ const FriendsList = () => {
   const theme = localStorage.getItem('theme');
 
   useEffect(() => {
-    Axios.post("http://localhost:5000/api/friends-list", {
+    Axios.post("https://lit-garden-32225.herokuapp.com/api/friends-list", {
       userData: isAuthenticated.id,
     }).then((response) => {
       setFriendsArray(response.data);
+      setIsLoading(false);
     });
   }, [isAuthenticated.id]);
 
@@ -35,6 +37,7 @@ const FriendsList = () => {
       />
       <Container>
         <Logo theme={theme} />
+        {isLoading && <p>Loading ...</p>}
         <FriendsListContainer>
           {friendsArray.map((friend) => {
             return <Friend friend={friend} />;

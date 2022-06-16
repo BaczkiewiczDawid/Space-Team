@@ -10,10 +10,11 @@ import useLocalStorageAuthenticate from "hooks/useLocalStorageAuthenticate";
 
 const Chat = () => {
   const isAuthenticated = useLocalStorageAuthenticate();
+  const [isLoading, setIsLoading] = useState(true);
 
   useAuthenticate(isAuthenticated);
 
-  const theme = localStorage.getItem('theme');
+  const theme = localStorage.getItem("theme");
 
   const messagesEndRef = useRef(null);
 
@@ -44,9 +45,12 @@ const Chat = () => {
   }, [inputValue]);
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/load-messages").then((response) => {
-      setMessagesList(response.data);
-    });
+    Axios.get("https://lit-garden-32225.herokuapp.com/api/load-messages").then(
+      (response) => {
+        setMessagesList(response.data);
+        setIsLoading(false);
+      }
+    );
   }, [inputValue]);
 
   return (
@@ -58,6 +62,7 @@ const Chat = () => {
       <div>
         <Logo theme={theme} />
         <MessageBox>
+          {isLoading && <p>Loading ...</p>}
           <SingleMessage
             messagesList={messagesList}
             messagesEndRef={messagesEndRef}

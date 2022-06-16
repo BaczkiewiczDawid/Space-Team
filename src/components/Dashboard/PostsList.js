@@ -5,16 +5,19 @@ import Axios from "axios";
 
 const PostsList = ({ userID }) => {
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/posts").then((response) => {
+    Axios.get("https://lit-garden-32225.herokuapp.com/api/posts").then((response) => {
       setPosts(response.data);
+      setIsLoading(false);
     });
   }, []);
 
   return (
     <Wrapper>
       <PostsContainer>
+        {isLoading && <p>Loading ...</p>}
         {posts.map((el, index) => {
           return (
             <Post

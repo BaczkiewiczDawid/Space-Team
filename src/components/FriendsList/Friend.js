@@ -16,7 +16,7 @@ const Friend = ({ friend }) => {
   };
 
   const handleDeleteFriend = () => {
-    Axios.post('http://localhost:5000/api/delete-friend', {
+    Axios.post('https://lit-garden-32225.herokuapp.com/api/delete-friend', {
       userData: friend.id
     })
   };

@@ -34,7 +34,7 @@ const SearchBar = ({ picture }) => {
 
   useEffect(() => {
     if (userData !== "" || isOpen) {
-      Axios.post("http://localhost:5000/api/search", {
+      Axios.post("https://lit-garden-32225.herokuapp.com/api/search", {
         userData: userData,
       }).then((response) => {
         setUsersList(response.data);
