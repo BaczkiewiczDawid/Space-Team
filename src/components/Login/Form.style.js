@@ -16,6 +16,7 @@ export const Input = styled.input`
   border-bottom: 1px solid ${props => props.err ? props.theme.error : props.theme.black};
   font-weight: 300;
   font-size: 1rem;
+  background-color: transparent;
   color: ${props => props.err ? props.theme.error : props.theme.black};
 
   &:nth-child(n + 2) {
