@@ -12,7 +12,7 @@ export const lightTheme = {
   error: "#ff4747",
   white: "#fafafa",
   black: "#2a2a2a",
-  friendHover: "ebebeb",
+  friendHover: "#E9E9E9",
   blue: '#2196F3',
 };
 
@@ -30,6 +30,6 @@ export const darkTheme = {
   error: "#ff4747",
   white: "#fafafa",
   black: "#2a2a2a",
-  friendHover: "#1a1919",
+  friendHover: "#E6E6E6",
   blue: '#2196F3',
 };

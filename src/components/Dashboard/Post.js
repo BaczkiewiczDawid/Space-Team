@@ -6,6 +6,7 @@ import {
   PostImage,
 } from "components/Dashboard/Post.style";
 import heartStrokeIcon from "assets/images/heart-stroke.svg";
+import heartStrokeIconWhite from 'assets/images/heart-white.svg';
 import heartFillIcon from "assets/images/heart-fill.svg";
 import styled from "styled-components";
 import Axios from "axios";
@@ -22,6 +23,7 @@ const LikesWrapper = styled.div`
 
   p {
     margin-left: 1rem;
+    color: ${({ theme }) => theme.text}
   }
 `;
 
@@ -32,6 +34,8 @@ const Post = ({ img, description, author, picture, userID, postID }) => {
     userID: userID,
     postID: postID,
   };
+
+  const theme = localStorage.getItem('theme');
 
   useEffect(() => {
     Axios.post("https://lit-garden-32225.herokuapp.com/api/likes-list", {
@@ -76,7 +80,7 @@ const Post = ({ img, description, author, picture, userID, postID }) => {
       <PostImage src={img} alt="img" />
       <LikesWrapper>
         <img
-          src={isLiked ? heartFillIcon : heartStrokeIcon}
+          src={isLiked ? heartFillIcon : (theme === 'dark' ? heartStrokeIconWhite : heartStrokeIcon)}
           alt="heart"
           onClick={handleLike}
         />

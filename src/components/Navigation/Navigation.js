@@ -50,7 +50,7 @@ const Navigation = ({ loggedUser, picture }) => {
       </Nav>
       {isOpen ? (
         <NavigationContent>
-          <Profile picture={picture} author={loggedUser}></Profile>
+          <Profile search={true} picture={picture} author={loggedUser}></Profile>
           <Underline />
           <SearchBar picture={picture} />
           <LinksContainer>
