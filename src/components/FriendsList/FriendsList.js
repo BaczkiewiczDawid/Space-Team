@@ -10,6 +10,7 @@ import {
 } from "components/FriendsList/FriendsList.style";
 import Friend from "components/FriendsList/Friend";
 import useLocalStorageAuthenticate from "hooks/useLocalStorageAuthenticate";
+import Loading from 'components/Dashboard/Loading';
 
 const FriendsList = () => {
   const [friendsArray, setFriendsArray] = useState([]);
@@ -37,7 +38,7 @@ const FriendsList = () => {
       />
       <Container>
         <Logo theme={theme} />
-        {isLoading && <p>Loading ...</p>}
+        {isLoading && <Loading />}
         <FriendsListContainer>
           {friendsArray.map((friend) => {
             return <Friend friend={friend} />;

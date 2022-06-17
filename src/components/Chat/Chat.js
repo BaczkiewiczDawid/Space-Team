@@ -7,6 +7,7 @@ import Axios from "axios";
 import SingleMessage from "components/Chat/SingleMessage";
 import SendMessage from "components/Chat/SendMessage";
 import useLocalStorageAuthenticate from "hooks/useLocalStorageAuthenticate";
+import Loading from 'components/Dashboard/Loading';
 
 const Chat = () => {
   const isAuthenticated = useLocalStorageAuthenticate();
@@ -62,7 +63,7 @@ const Chat = () => {
       <div>
         <Logo theme={theme} />
         <MessageBox>
-          {isLoading && <p>Loading ...</p>}
+          {isLoading && <Loading />}
           <SingleMessage
             messagesList={messagesList}
             messagesEndRef={messagesEndRef}

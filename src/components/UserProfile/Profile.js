@@ -7,6 +7,7 @@ import {
   Button,
 } from "components/UserProfile/Profile.style";
 import editIcon from "assets/images/edit-icon.svg";
+import editIconWhite from 'assets/images/edit-icon-white.svg';
 import plusIcon from "assets/images/plus-icon.svg";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
@@ -45,6 +46,8 @@ const Profile = ({ isAuthenticated, searchedUser }) => {
     });
   }, [isAuthenticated.id, searchedUser.id]);
 
+  const theme = localStorage.getItem('theme');
+
   return (
     <StyledProfile>
       <Picture>
@@ -55,7 +58,7 @@ const Profile = ({ isAuthenticated, searchedUser }) => {
           <h1>{searchedUser.username}</h1>
           {isAuthenticated.loggedUser === searchedUser.username ? (
             <img
-              src={editIcon}
+              src={theme === 'dark' ? editIconWhite : editIcon}
               alt="edit profile"
               onClick={handleEditProfile}
             />

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Wrapper, PostsContainer } from "components/Dashboard/PostsList.style";
 import Post from "components/Dashboard/Post";
 import Axios from "axios";
+import Loading from 'components/Dashboard/Loading';
 
 const PostsList = ({ userID }) => {
   const [posts, setPosts] = useState([]);
@@ -17,7 +18,7 @@ const PostsList = ({ userID }) => {
   return (
     <Wrapper>
       <PostsContainer>
-        {isLoading && <p>Loading ...</p>}
+        {isLoading && <Loading />}
         {posts.map((el, index) => {
           return (
             <Post
