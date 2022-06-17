@@ -15,7 +15,6 @@ const StyledButton = styled.button`
   }
 
   &:hover {
-    /* background-color: ${({ theme }) => theme.darkPurple};*/
     transition: .5s; 
     box-shadow: inset 12rem 0 0 0 ${({ theme }) => theme.darkPurple};
   }

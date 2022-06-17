@@ -10,6 +10,7 @@ import {
   ProfileContent,
 } from "components/UserProfile/UserProfile.style";
 import useLocalStorageAuthenticate from "hooks/useLocalStorageAuthenticate";
+import Loading from 'components/Dashboard/Loading';
 
 const UserProfile = () => {
   const [searchedUser, setSearchedUser] = useState("");
@@ -49,7 +50,7 @@ const UserProfile = () => {
           isAuthenticated={isAuthenticated}
           searchedUser={searchedUser}
         />
-        {isLoading && <p>Loading ...</p>}
+        {isLoading && <Loading />}
         <h3>Recent posts</h3>
         {postsList &&
           postsList.map((post) => {
