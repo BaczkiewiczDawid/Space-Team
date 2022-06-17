@@ -30,6 +30,6 @@ export const darkTheme = {
   error: "#ff4747",
   white: "#fafafa",
   black: "#2a2a2a",
-  friendHover: "#E6E6E6",
+  friendHover: "#181818",
   blue: '#2196F3',
 };

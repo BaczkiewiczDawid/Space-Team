@@ -6,6 +6,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import trashIcon from "assets/images/trash-icon.svg";
 import chatIcon from "assets/images/message-square-black.svg";
+import chatIconWhite from 'assets/images/message-square-white.svg';
 import Axios from 'axios';
 
 const Friend = ({ friend }) => {
@@ -21,6 +22,8 @@ const Friend = ({ friend }) => {
     })
   };
 
+  const theme = localStorage.getItem('theme');
+
   return (
     <SingleFriend >
       <StyledProfile
@@ -30,7 +33,7 @@ const Friend = ({ friend }) => {
         onClick={handleShowProfile}
       />
       <IconsWrapper>
-        <img src={chatIcon} alt="chat with friend" />
+        <img src={theme === 'dark' ? chatIconWhite : chatIcon} alt="chat with friend" />
         <img src={trashIcon} alt="delete friend" onClick={handleDeleteFriend} />
       </IconsWrapper>
     </SingleFriend>
