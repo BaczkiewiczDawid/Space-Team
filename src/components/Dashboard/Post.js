@@ -26,8 +26,8 @@ const LikesWrapper = styled.div`
 `;
 
 const Post = ({ img, description, author, picture, userID, postID }) => {
-  const [likes, setLikes] = useState(0);
-  const [isLiked, setIsLiked] = useState(false);
+  const [likes, setLikes] = useState(null);
+  const [isLiked, setIsLiked] = useState(null);
   const userData = {
     userID: userID,
     postID: postID,
@@ -37,33 +37,37 @@ const Post = ({ img, description, author, picture, userID, postID }) => {
     Axios.post("https://lit-garden-32225.herokuapp.com/api/likes-list", {
       userData: userData,
     }).then((response) => {
-      setIsLiked(response.data.length > 0 ? true : false);
+      if (isLiked === null) {
+        setIsLiked(response.data.length > 0 ? true : false);
+      }
     });
   });
 
   const handleLike = () => {
     if (isLiked) {
-      Axios.post('http://localhost:5000/api/delete-like', {
+      Axios.post("https://lit-garden-32225.herokuapp.com/api/delete-like", {
         userData,
-      }).then((response) => {
-        setIsLiked(false);
-      })
-    } else {
-      Axios.post("http://localhost:5000/api/add-like", {
-        userData: userData,
-      }).then((response) => {
-        setIsLiked(true);
       });
+      setIsLiked(false);
+    } else {
+      Axios.post("https://lit-garden-32225.herokuapp.com/api/add-like", {
+        userData: userData,
+      });
+      setIsLiked(true);
     }
+
+    setLikes(isLiked ? likes - 1 : likes + 1)
   };
 
   useEffect(() => {
-    Axios.post("http://localhost:5000/api/count-likes", {
+    Axios.post("https://lit-garden-32225.herokuapp.com/api/count-likes", {
       userData: userData,
     }).then((response) => {
-      setLikes(response.data[0].count);
-    });
-  });
+      if (likes === null) {
+        setLikes(response.data[0].count);
+      }
+    })
+  }, [userData, likes])
 
   return (
     <PostWrapper>

@@ -37,7 +37,7 @@ const validate = (values) => {
 
 const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
   const [isInformationModalOpen, setIsInformationModalOpen] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(null);
   let navigate = useNavigate();
 
   const formik = useFormik({
@@ -75,32 +75,30 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
       setIsInformationModalOpen(true);
 
       setTimeout(() => {
-        setIsInformationModalOpen(false)
-      }, 2500);
+        setIsInformationModalOpen(false);
+      }, 3500);
 
       navigate("/login", { replace: true });
     } else {
       Axios.post("https://lit-garden-32225.herokuapp.com/api/login", {
         userData: userData,
-      })
-        .then((response) => {
-          if (response.data[0]) {
-            setIsAuthenticated({
-              authenticated: true,
-              loggedUser: response.data[0].username,
-              id: response.data[0].id,
-              picture: response.data[0].picture,
-            });
-            navigate("/", { replace: true });
-          }
-        })
-
+      }).then((response) => {
+        if (response.data[0]) {
+          setIsAuthenticated({
+            authenticated: true,
+            loggedUser: response.data[0].username,
+            id: response.data[0].id,
+            picture: response.data[0].picture,
+          });
+          navigate("/", { replace: true });
+        }
+      });
     }
   };
 
   const handleCloseInformationModal = () => {
-    setIsInformationModalOpen(false)
-  }
+    setIsInformationModalOpen(false);
+  };
 
   return (
     <StyledForm onSubmit={formik.handleSubmit && handleSubmit}>
@@ -165,20 +163,21 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
       location.pathname === "/register" ? (
         <ErrorMessage>{formik.errors.password}</ErrorMessage>
       ) : null}
-
       <StyledButton type="submit">
         {location.pathname === "/register" ? "SIGN UP" : "LOG IN"}
       </StyledButton>
-      <InformationModal
-        isOpen={isInformationModalOpen}
-        message={
-          isSuccess === true
-            ? "Account created successfully!"
-            : "Something went wrong"
-        }
-        success={isSuccess}
-        onClick={handleCloseInformationModal}
-      />
+      {isSuccess !== null ? (
+                <InformationModal
+                isOpen={isInformationModalOpen}
+                message={
+                  isSuccess === true
+                    ? "Account created successfully!"
+                    : "Something went wrong"
+                }
+                success={isSuccess}
+                onClick={handleCloseInformationModal}
+              /> 
+      ) : null}
     </StyledForm>
   );
 };
