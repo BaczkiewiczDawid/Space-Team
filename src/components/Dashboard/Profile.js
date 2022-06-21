@@ -1,12 +1,15 @@
-import { StyledProfile, Picture, StyledProfilePicture } from 'components/Dashboard/Profile.style';
+import { StyledProfile, Picture, StyledProfilePicture, Name } from 'components/Dashboard/Profile.style';
+import useLocalStorageAuthenticate from 'hooks/useLocalStorageAuthenticate';
 
 const Profile = ({ dashboard, author, search, picture, className, onClick }) => {
+  const isAuthenticated = useLocalStorageAuthenticate();
+
   return (
     <StyledProfile dashboard={dashboard} search={search} className={className} onClick={onClick}>
-      <Picture dashboard={dashboard}>
+      <Picture dashboard={dashboard} to={`/profile/${isAuthenticated.id}`}>
         <StyledProfilePicture src={picture} alt="profile" />
       </Picture>
-      {author && <p>{author}</p>}
+      {author && <Name to={`/profile/${isAuthenticated.id}`} dashboard={dashboard}>{author}</Name>}
     </StyledProfile>
   );
 };
