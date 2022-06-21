@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const StyledProfile = styled.div`
   display: flex;
@@ -7,13 +8,6 @@ export const StyledProfile = styled.div`
   margin-left: ${props => props.dashboard ? '0' : '1.2rem'};
   z-index: 4;
   margin-top: ${props => props.search ? '.8rem' : '0'};
-
-  p {
-    margin-left: ${props => props.dashboard ? '1.5rem' : '2rem'};
-    color: ${props => props.dashboard ? props.theme.text : props.theme.navigationText};
-    font-size: 1.1rem;
-  }
-
 
   @media screen and (min-width: 768px) {
     margin-top: ${props => props.dashboard ? '0' : '1rem'};
@@ -24,7 +18,14 @@ export const StyledProfile = styled.div`
   }
 `;
 
-export const Picture = styled.div`
+export const Name = styled(Link)`
+  margin-left: ${props => props.dashboard ? '1.5rem' : '2rem'};
+  color: ${props => props.dashboard ? props.theme.text : props.theme.navigationText};
+  font-size: 1.1rem;
+  text-decoration: none;
+`;
+
+export const Picture = styled(Link)`
   width: 45px;
   height: 45px;
   background-color: transparent;
