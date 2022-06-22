@@ -38,6 +38,7 @@ const validate = (values) => {
 const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
   const [isInformationModalOpen, setIsInformationModalOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(null);
+  const [message, setMessage] = useState(false);
   let navigate = useNavigate();
 
   const formik = useFormik({
@@ -62,23 +63,32 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
     };
 
     if (location.pathname === "/register") {
-      Axios.post("https://lit-garden-32225.herokuapp.com/api/register", {
-        userData: userData,
-      })
-        .then(() => {
-          setIsSuccess(true);
+      if (!formik.errors.username && !formik.errors.email && !formik.errors.password) {
+        Axios.post("https://lit-garden-32225.herokuapp.com/api/register", {
+          userData: userData,
         })
-        .catch((err) => {
-          setIsSuccess(false);
-        });
+          .then(() => {
+            setIsSuccess(true);
+          })
+          .catch((err) => {
+            setIsSuccess(false);
+          });
+  
+        setIsInformationModalOpen(true);
+  
+        setTimeout(() => {
+          setIsInformationModalOpen(false);
+        }, 2500);
+  
+        navigate("/login", { replace: true });
+      } else {
+        setIsInformationModalOpen(true);
+        setIsSuccess(false)
 
-      setIsInformationModalOpen(true);
-
-      setTimeout(() => {
-        setIsInformationModalOpen(false);
-      }, 3500);
-
-      navigate("/login", { replace: true });
+        setTimeout(() => {
+          setIsInformationModalOpen(false);
+        }, 2500);
+      }
     } else {
       Axios.post("https://lit-garden-32225.herokuapp.com/api/login", {
         userData: userData,
@@ -91,6 +101,16 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
             picture: response.data[0].picture,
           });
           navigate("/", { replace: true });
+        }
+        if (response.data.length < 1) {
+          console.log(response)
+          setIsInformationModalOpen(true)
+          setIsSuccess(false)
+          setMessage(true)
+
+          setTimeout(() => {
+            setIsInformationModalOpen(false);
+          }, 2500);
         }
       });
     }
@@ -167,16 +187,16 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
         {location.pathname === "/register" ? "SIGN UP" : "LOG IN"}
       </StyledButton>
       {isSuccess !== null ? (
-                <InformationModal
-                isOpen={isInformationModalOpen}
-                message={
-                  isSuccess === true
-                    ? "Account created successfully!"
-                    : "Something went wrong"
-                }
-                success={isSuccess}
-                onClick={handleCloseInformationModal}
-              /> 
+        <InformationModal
+          isOpen={isInformationModalOpen}
+          message={
+            isSuccess === true
+              ? "Account created successfully!"
+              : (message ? 'Incorrect login details' : "Something went wrong")
+          }
+          success={isSuccess}
+          onClick={handleCloseInformationModal}
+        />
       ) : null}
     </StyledForm>
   );
