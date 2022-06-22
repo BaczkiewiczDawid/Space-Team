@@ -9,7 +9,7 @@ const Profile = ({ dashboard, author, search, picture, className, onClick }) => 
       <Picture dashboard={dashboard} to={`/profile/${isAuthenticated.id}`}>
         <StyledProfilePicture src={picture} alt="profile" />
       </Picture>
-      {author && <Name to={`/profile/${isAuthenticated.id}`} dashboard={dashboard}>{author}</Name>}
+      {author && <Name to={`/profile/${isAuthenticated.id}`}np dashboard={dashboard}>{author}</Name>}
     </StyledProfile>
   );
 };

@@ -30,6 +30,8 @@ const SearchBar = ({ picture }) => {
 
   const handleUserData = (e) => {
     setUserData(e.target.value);
+
+    handleOpenSearchBar(true);
   };
 
   useEffect(() => {
@@ -58,7 +60,7 @@ const SearchBar = ({ picture }) => {
       <input
         type="text"
         placeholder="Search"
-        onClick={handleOpenSearchBar}
+        // onClick={handleOpenSearchBar}
         onChange={handleUserData}
         value={userData}
       />
