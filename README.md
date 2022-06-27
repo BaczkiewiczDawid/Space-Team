@@ -1,10 +1,7 @@
 
-# Space Team
+![Logo](https://space-team.herokuapp.com/static/media/logo.426603c0ca72eba60ca7638f61e83954.svg)
 
 Social application for teams
-
-
-![Logo](https://space-team.herokuapp.com/static/media/logo.426603c0ca72eba60ca7638f61e83954.svg)
 
 
 ## Demo
