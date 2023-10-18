@@ -22,7 +22,7 @@ const FriendsList = () => {
   const theme = localStorage.getItem('theme');
 
   useEffect(() => {
-    Axios.post("https://lit-garden-32225.herokuapp.com/api/friends-list", {
+    Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/friends-list", {
       userData: isAuthenticated.id,
     }).then((response) => {
       setFriendsArray(response.data);

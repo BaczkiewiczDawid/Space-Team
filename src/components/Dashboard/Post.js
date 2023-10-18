@@ -38,7 +38,7 @@ const Post = ({ img, description, author, picture, userID, postID }) => {
   const theme = localStorage.getItem('theme');
 
   useEffect(() => {
-    Axios.post("https://lit-garden-32225.herokuapp.com/api/likes-list", {
+    Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/likes-list", {
       userData: userData,
     }).then((response) => {
       if (isLiked === null) {
@@ -49,12 +49,12 @@ const Post = ({ img, description, author, picture, userID, postID }) => {
 
   const handleLike = () => {
     if (isLiked) {
-      Axios.post("https://lit-garden-32225.herokuapp.com/api/delete-like", {
+      Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/delete-like", {
         userData,
       });
       setIsLiked(false);
     } else {
-      Axios.post("https://lit-garden-32225.herokuapp.com/api/add-like", {
+      Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/add-like", {
         userData: userData,
       });
       setIsLiked(true);
@@ -64,7 +64,7 @@ const Post = ({ img, description, author, picture, userID, postID }) => {
   };
 
   useEffect(() => {
-    Axios.post("https://lit-garden-32225.herokuapp.com/api/count-likes", {
+    Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/count-likes", {
       userData: userData,
     }).then((response) => {
       if (likes === null) {

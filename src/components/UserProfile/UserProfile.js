@@ -23,7 +23,7 @@ const UserProfile = () => {
   useAuthenticate(isAuthenticated);
 
   useEffect(() => {
-    Axios.post("https://lit-garden-32225.herokuapp.com/api/get-user", {
+    Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/get-user", {
       userData: userId,
     }).then((response) => {
       setSearchedUser(response.data[0]);
@@ -32,7 +32,7 @@ const UserProfile = () => {
   }, [userId]);
 
   useEffect(() => {
-    Axios.post("https://lit-garden-32225.herokuapp.com/api/user-posts", {
+    Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/user-posts", {
       userData: searchedUser.id,
     }).then((response) => {
       setPostsList(response.data);

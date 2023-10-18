@@ -24,7 +24,7 @@ const Profile = ({ loggedUserData }) => {
 
   const handleChangeProfilePicture = () => {
     if (imageURL !== "") {
-      Axios.post("https://lit-garden-32225.herokuapp.com/api/change-picture", {
+      Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/change-picture", {
         userData: {
           picture: imageURL,
           user: loggedUserData.id,

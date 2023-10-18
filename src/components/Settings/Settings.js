@@ -22,7 +22,7 @@ const Settings = ({ theme, toggleTheme }) => {
   const userData = isAuthenticated.id;
 
   useEffect(() => {
-    Axios.post("https://lit-garden-32225.herokuapp.com/api/get-user", {
+    Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/get-user", {
       userData: userData,
     }).then((response) => {
       setLoggedUserData(response.data[0]);

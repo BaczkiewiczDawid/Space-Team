@@ -9,7 +9,7 @@ const PostsList = ({ userID }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    Axios.get("https://lit-garden-32225.herokuapp.com/api/posts").then((response) => {
+    Axios.get("https://space-team-server-5628bd799a00.herokuapp.com/posts").then((response) => {
       setPosts(response.data);
       setIsLoading(false);
     });

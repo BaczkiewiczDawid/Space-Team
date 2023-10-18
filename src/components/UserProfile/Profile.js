@@ -29,14 +29,14 @@ const Profile = ({ isAuthenticated, searchedUser }) => {
 
   const handleAddFriend = () => {
     if (!isFriend) {
-      Axios.post("https://lit-garden-32225.herokuapp.com/api/add-friend", {
+      Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/add-friend", {
         userData: userData,
       });
     }
   };
 
   useEffect(() => {
-    Axios.post("https://lit-garden-32225.herokuapp.com/api/friends-list", {
+    Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/friends-list", {
       userData: isAuthenticated.id,
     }).then((response) => {
       setFriendsList(response.data);

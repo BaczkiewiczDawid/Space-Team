@@ -19,7 +19,7 @@ const Form = ({ loggedUserData, setLoggedUserData }) => {
 
   const handleSaveData = (e) => {
     e.preventDefault();
-    Axios.post("https://lit-garden-32225.herokuapp.com/api/set-data", {
+    Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/set-data", {
       userData: loggedUserData,
     });
 

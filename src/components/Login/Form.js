@@ -64,7 +64,7 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
 
     if (location.pathname === "/register") {
       if (!formik.errors.username && !formik.errors.email && !formik.errors.password) {
-        Axios.post("https://lit-garden-32225.herokuapp.com/api/register", {
+        Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/register", {
           userData: userData,
         })
           .then(() => {
@@ -90,7 +90,7 @@ const Form = ({ location, setIsAuthenticated, isAuthenticated }) => {
         }, 2500);
       }
     } else {
-      Axios.post("https://lit-garden-32225.herokuapp.com/api/login", {
+      Axios.post("https://space-team-server-5628bd799a00.herokuapp.com/login", {
         userData: userData,
       }).then((response) => {
         if (response.data[0]) {
