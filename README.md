@@ -5,6 +5,8 @@ Social application for teams
 
 [https://space-team.herokuapp.com](https://space-team-fe4f7a10bc9d.herokuapp.com)
 
+## Login Details
+
 Login: test@test.com
 
 Password: a
